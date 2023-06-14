@@ -53,6 +53,7 @@ if(isset($_POST['insert']))
 	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--	Css Link
 	========================================================-->
@@ -69,11 +70,11 @@ if(isset($_POST['insert']))
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+    <title>Exclusive Kasi Living - Profile</title>
 </head>
 
  <!-- Chat Bot Code -->
- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
+ <!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
   <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
   <script>
       WAWidget.init({
@@ -82,7 +83,7 @@ if(isset($_POST['insert']))
           widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
           openByDefault: false
       });
-  </script>
+  </script> -->
    <!-- Chat Bot Code End -->
 
 <body>
@@ -115,7 +116,7 @@ if(isset($_POST['insert']))
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item text-white"><a href="index.php">Home</a></li>
                                 <li class="breadcrumb-item active">Profile</li>
                             </ol>
                         </nav>

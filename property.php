@@ -3,8 +3,24 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-///code								
+///code			
+
+// Assuming $row['publish_time'] contains the timestamp of the listing's publication
+$publishTime = strtotime($row['publish_time']);
+$currentTimestamp = time();
+$diffSeconds = $currentTimestamp - $publishTime;
+$diffMonths = floor($diffSeconds / (30 * 24 * 60 * 60)); // Calculate the difference in months
+
+if ($diffMonths > 0) {
+    $timeAgo = $diffMonths . " Months Ago";
+} else {
+    $timeAgo = "Less than a Month Ago";
+}
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +41,7 @@ include("config.php");
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--	Css Link
 	========================================================-->
@@ -40,34 +57,14 @@ include("config.php");
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+    <title>Exclusive Kasi Living - Property</title>
 </head>
 
-<!-- Chat Bot Code -->
-<div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
-  <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
-  <script>
-      WAWidget.init({
-          el: document.querySelector("#assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"),
-          endpoint: "https://assistant.workativ.com/widget",
-          widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
-          openByDefault: false
-      });
-  </script>
-   <!-- Chat Bot Code End -->
+
 
 <body>
 
-<!--	Page Loader
-=============================================================
-<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>
---> 
+
 
 
 <div id="page-wrapper">
@@ -86,7 +83,7 @@ include("config.php");
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item text-white"><a href="index.php">Home</a></li>
                                 <li class="breadcrumb-item active">Properties</li>
                             </ol>
                         </nav>
@@ -110,23 +107,25 @@ include("config.php");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
-									
+								
+                                
+
                             <div class="col-md-6">
                                 <div class="featured-thumb hover-zoomer mb-4">
-                                    <div class="overlay-black overflow-hidden position-relative" style="height:209.83px"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
+                                    <div class="overlay-black overflow-hidden position-relative" style="height:209.83px"> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage">
                                         
                                         <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
-                                        <!-- <div class="price text-primary text-capitalize">$<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div> -->
+                                        <!-- <div class="price text-primary text-capitalize">$<?php echo $row['13'];?> <span class="text-white"><?php echo $row['15'];?> Sqft</span></div> -->
                                         
                                     </div>
                                     <div class="featured-thumb-data shadow-one">
                                         <div class="p-4">
                                             <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['15'];?></span> </div>
-                                        <!-- <div class="px-4 pb-4 d-inline-block w-100">
+                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span> </div>
+                                        <div class="px-4 pb-4 d-inline-block w-100">
                                             <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['uname'];?></div>
-                                            <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
-                                        </div> -->
+                                            <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i><?php $date = date("Y-m-d", strtotime($row['31'])); echo $date;?></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +151,7 @@ include("config.php");
                     </div>
 					
                     <div class="col-lg-4">
-                        <div class="sidebar-widget">
+                        <!-- <div class="sidebar-widget">
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 my-4">EMI Calculator</h4>
 						<form class="d-inline-block w-100" action="calc.php" method="post">
                             <label class="sr-only">Property Amount</label>
@@ -178,7 +177,7 @@ include("config.php");
                             </div>
                             <button type="submit" value="submit" name="calc" class="btn btn-primary mt-4">Calculate EMI</button>
                         </form>
-                        </div>
+                        </div> -->
                         
                         <div class="sidebar-widget mt-5">
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>
@@ -189,15 +188,84 @@ include("config.php");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>
-                                <li> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage" style="width: 80px; height: 53.33px; object-fit: cover;">
+                                <li> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage" style="width: 80px; height: 53.33px; object-fit: cover;">
                                     <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
-                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['14'];?></span>
+                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span>
                                     
                                 </li>
                                 <?php } ?>
 
                             </ul>
                         </div>
+
+                        <div class="sidebar-widget mt-5">
+                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search Property</h4>
+                            <ul class="property_list_widget">
+
+
+                                    <form method="post" action="propertygrid.php">
+                                        <div class="form-group">
+                                            <label for="city">City:</label>
+                                            <input type="text" name="city" id="city" class="form-control"
+                                                placeholder="Enter city">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" name="filter" value="Filter" class="btn btn-primary">
+                                        </div>
+                                    </form>
+
+                                    <form method="post" action="propertygrid.php">
+                                        <div class="form-group">
+                                            <label for="type">Type:</label>
+                                            <select class="form-control" name="type">
+                                                <option name="type" id="type" value="">Select Type</option>
+                                                <option name="type" id="type" value="Room">Room</option>
+                                                <option name="type" id="type" value="Back Room">Back Room</option>
+                                                <option name="type" id="type" value="Apartment">Apartment</option>
+                                                <option name="type" id="type" value="Flat">Flat</option>
+                                                <option name="type" id="type" value="House">House</option>
+                                                <option name="type" id="type" value="Cottage">Cottage</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" name="filter" value="Filter" class="btn btn-primary">
+                                        </div>
+                                    </form>
+
+
+                                    <form method="post" action="propertygrid.php">
+                                    <div class="form-group">
+                                            <label for="stype">For Rent or Sale:</label>
+                                            <input type="text" name="stype" id="stype" class="form-control"
+                                                placeholder="Rent or Sale">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" name="filter" value="Filter" class="btn btn-primary">
+                                        </div>
+                                    </form>
+
+
+							
+								<!-- <?php 
+								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+										while($row=mysqli_fetch_array($query))
+										{
+								?>
+                                <li> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage">
+                                    <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
+                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span>
+                                    
+                                </li>
+                                <?php } ?> -->
+
+                            </ul>
+                        </div>
+
+
                     </div>
                     
                 </div>

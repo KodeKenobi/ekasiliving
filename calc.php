@@ -35,6 +35,7 @@ if(isset($_REQUEST['calc']))
 	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--	Css Link
 	========================================================-->
@@ -51,11 +52,11 @@ if(isset($_REQUEST['calc']))
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+    <title>Exclusive Kasi Living - Calculate</title>
 </head>
 
  <!-- Chat Bot Code -->
- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
+ <!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
   <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
   <script>
       WAWidget.init({
@@ -64,7 +65,7 @@ if(isset($_REQUEST['calc']))
           widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
           openByDefault: false
       });
-  </script>
+  </script> -->
    <!-- Chat Bot Code End -->
 
 <body>

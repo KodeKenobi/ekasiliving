@@ -25,6 +25,7 @@ if(!isset($_SESSION['uemail']))
 	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!--	Css Link
 	========================================================-->
@@ -41,11 +42,11 @@ if(!isset($_SESSION['uemail']))
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+<title>Exclusive Kasi Living - Feature</title>
 </head>
 
 <!-- Chat Bot Code -->
-<div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
+<!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
   <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
   <script>
       WAWidget.init({
@@ -54,7 +55,7 @@ if(!isset($_SESSION['uemail']))
           widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
           openByDefault: false
       });
-  </script>
+  </script> -->
    <!-- Chat Bot Code End -->
 
 <body>
@@ -87,7 +88,7 @@ if(!isset($_SESSION['uemail']))
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
-                                <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item text-white"><a href="index.php">Home</a></li>
                                 <li class="breadcrumb-item active">User Listed Property</li>
                             </ol>
                         </nav>
@@ -110,48 +111,51 @@ if(!isset($_SESSION['uemail']))
 							?>
                         </div>
 					</div>
-					<table class="items-list col-lg-12" style="border-collapse:inherit;">
-                        <thead>
-                             <tr  class="bg-primary">
-                                <th class="text-white font-weight-bolder">Properties</th>
-                                <th class="text-white font-weight-bolder">BHK</th>
-                                <th class="text-white font-weight-bolder">Reason</th>
-                                <th class="text-white font-weight-bolder">Added Date</th>
-								<th class="text-white font-weight-bolder">Status</th>
-                                <th class="text-white font-weight-bolder">Update</th>
-								<th class="text-white font-weight-bolder">Delete</th>
-                             </tr>
-                        </thead>
-                        <tbody>
-						
-							<?php 
-							$uid=$_SESSION['uid'];
-							$query=mysqli_query($con,"SELECT * FROM `property` WHERE uid='$uid'");
-								while($row=mysqli_fetch_array($query))
-								{
-							?>
-                            <tr>
-                                <td>
-									<img  src="admin/property/<?php echo $row['18'];?>" style="height: 133.32px; object-fit: cover;"  alt="pimage" >
-                                    <div class="property-info d-table">
-                                        <h5 class="text-secondary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                        <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['15'];?></span>
-                                        <div class="price mt-3">
-											<span class="text-primary">₹&nbsp;<?php echo $row['13'];?></span>
-										</div>
-                                    </div>
-								</td>
-                                <td><?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
-                                <td><?php echo $row['26'];?></td>
-								<td class="text-capitalize"><?php echo $row['24'];?></td>
-                                <td><a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Update</a></td>
-								<td><a class="btn btn-primary" href="submitpropertydelete.php?id=<?php echo $row['0'];?>">Delete</a></td>
-                            </tr>
-							<?php } ?>
-							
-                        </tbody>
-                    </table>            
+                    <div class="table-responsive">
+  <table class="table items-list">
+    <thead>
+      <tr class="bg-primary">
+        <th scope="col" class="text-white font-weight-bolder">Properties</th>
+        <th scope="col" class="text-white font-weight-bolder">Date</th>
+        <th scope="col" class="text-white font-weight-bolder">Reason</th>
+        <th scope="col" class="text-white font-weight-bolder">Type</th>
+        <th scope="col" class="text-white font-weight-bolder">Status</th>
+        <th scope="col" class="text-white font-weight-bolder">Update</th>
+        <th scope="col" class="text-white font-weight-bolder">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php 
+      $uid=$_SESSION['uid'];
+      $query=mysqli_query($con,"SELECT * FROM `property` WHERE uid='$uid'");
+      while($row=mysqli_fetch_array($query))
+      {
+      ?>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img src="admin/property/<?php echo $row['21'];?>" alt="pimage" style="height: 133.32px; object-fit: cover;">
+            <div class="property-info ml-3">
+              <h5 class="text-secondary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
+              <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['17'] . ', ' . $row['18']; ?></span>
+              <div class="price mt-3">
+                <span class="text-primary">Rent: R&nbsp;<?php echo $row['13'];?></span>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td><?php $date = date("Y-m-d", strtotime($row['31'])); echo $date;?></td>
+        <td class="text-capitalize">For <?php echo $row['5'];?></td>
+        <td class="text-capitalize"><?php echo $row['3'];?></td>
+        <td class="text-capitalize"><?php echo $row['26'];?></td>
+        <td><a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Update</a></td>
+        <td><a class="btn btn-primary" href="submitpropertydelete.php?id=<?php echo $row['0'];?>">Delete</a></td>
+      </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+</div>
+         
             </div>
         </div>
 	<!--	Submit property   -->
