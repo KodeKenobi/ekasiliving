@@ -1,34 +1,33 @@
-<?php 
+<?php
 session_start();
 include("config.php");
-$error="";
-$msg="";
-if(isset($_REQUEST['login']))
-{
-	$email=addslashes(strip_tags($_REQUEST['email']));
-	$pass=addslashes(strip_tags($_REQUEST['pass']));
-	
-	
-	if(!empty($email) && !empty($pass))
-	{
-		$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
-		$result=mysqli_query($con, $sql);
-		$row=mysqli_fetch_array($result);
-		   if($row){
-			   
-				$_SESSION['uid']=$row['uid'];
-				$_SESSION['uemail']=$email;
-				header("location:index.php");
-				
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Invalid Credentials</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-	}
+$error = "";
+$msg = "";
+
+if (isset($_REQUEST['login'])) {
+    $email = addslashes(strip_tags($_REQUEST['email']));
+    $pass = addslashes(strip_tags($_REQUEST['pass']));
+
+    if (!empty($email) && !empty($pass)) {
+        $sql = "SELECT * FROM user WHERE uemail='$email' AND upass='$pass'";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_array($result);
+        
+        if ($row) {
+            $_SESSION['uid'] = $row['uid'];
+            $_SESSION['uemail'] = $email;
+            $_SESSION['uname'] = $row['uname']; // Add this line to store uname in session
+			$_SESSION['uphone'] = $row['uphone'];
+            header("location:index.php");
+        } else {
+            $error = "<p class='alert alert-warning'>Invalid Credentials</p> ";
+        }
+    } else {
+        $error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -146,6 +145,7 @@ if(isset($_REQUEST['login']))
 										<center><button class="btn btn-primary" name="login" value="Login" type="submit">Login</button></center>
 									
 								</form>
+								<div class="text-center dont-have">Don't have an account? <a href="register.php">Register</a></div>
 <!-- 								
 								<div class="login-or">
 									<span class="or-line"></span>

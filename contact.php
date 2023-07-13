@@ -124,21 +124,21 @@ if(isset($_POST['send']))
                                 <li class="d-flex mb-4"> <i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Address</h5>
-                                        <span class="text-secondary">Sadguru Plaza Office No 03, Laxmi Chowk,Near Confert Hotel, Hinjawadi, Pune, Maharashtra 411057</span> 
+                                        <span class="text-secondary">Samgxika Plaza Office No 03, Laxmi Chowk,Near Confert Hotel, Fourways, Johannesburg, Gauteng 411057</span> 
 										<!-- <span class="text-secondary">Collins Street West, Victoria 8007, Australia</span> -->
 										</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Call Us</h5>
-                                        <span class="d-table text-secondary">+91 80555 08899</span>
+                                        <span class="d-table text-secondary">+27 80555 08899</span>
 										<!-- <span class="text-secondary">012 34 567 809 </span> -->
 									</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-envelope text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Email </h5>
-										<span class="d-table text-secondary">info@propmajestic.com</span>
+										<span class="d-table text-secondary">info@kasirentals.com</span>
 										<!-- <span class="text-secondary">helpline@homex.com</span> -->
 										</div>
                                 </li>
@@ -191,7 +191,7 @@ if(isset($_POST['send']))
         
         <!--	Map -->
 
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.4237123926264!2d73.73352129999999!3d18.6000024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ba45ae66beb1%3A0x9fd81ea8c190c45b!2sProp%20Majestic%20Reality%20Services!5e0!3m2!1sen!2sin!4v1680603824794!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.021364926688!2d27.95944141506062!3d-26.191746983447277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e951d0c9fbac0f5%3A0x8e9d107a51ef7255!2sJohannesburg%2C%20South%20Africa!5e0!3m2!1sen!2s!4v1625823835296!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
         <!-- <iframe src="https://www.google.com/maps/place/Prop+Majestic+Reality+Services/@18.6000024,73.7313326,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2ba45ae66beb1:0x9fd81ea8c190c45b!8m2!3d18.6000024!4d73.7335213!16s%2Fg%2F11gcxxcz08" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
 		<!--	Map -->

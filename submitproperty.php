@@ -239,51 +239,13 @@ if(isset($_POST['add']))
 
                                     <div class="col-xl-6">
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label" name="bath">Bathroom</label>
+                                        <label class="col-lg-3 col-form-label">Area Size</label>
                                             <div class="col-lg-9">
-                                                <!-- <select class="form-control" required name="stype" name="bath"> -->
-                                                <select class="form-control" name="bath">
-                                                    <option value="" name="">Select Bathroom</option>
-                                                    <option value="1" name="bath" required>1</option>
-                                                    <option value="2" name="bath" required>2</option>
-                                                    <option value="3" name="bath" required>3</option>
-                                                    <option value="4" name="bath" required>4</option>
-                                                    <option value="5" name="bath" required>5</option>
-                                                    <option value="6" name="bath" required>6</option>
-                                                    <option value="7" name="bath" required>7</option>
-                                                    <option value="8" name="bath" required>8</option>
-                                                    <option value="9" name="bath" required>9</option>
-                                                    <option value="10" name="bath" required>10</option>
-                                                </select>
+                                                <input type="text" class="form-control" name="asize" required
+                                                    placeholder="Enter Area Size (in square meters)">
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <div class="col-xl-6">
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label" name="kitc">Kitchen</label>
-                                            <div class="col-lg-9">
-                                                <!-- <select class="form-control" required name="stype" name="bath"> -->
-                                                <select class="form-control" name="kitc">
-                                                    <option value="" name="">Select Kitchen</option>
-                                                    <option value="1" name="kitc" required>1</option>
-                                                    <option value="2" name="kitc" required>2</option>
-                                                    <option value="3" name="kitc" required>3</option>
-                                                    <option value="4" name="kitc" required>4</option>
-                                                    <option value="5" name="kitc" required>5</option>
-                                                    <option value="6" name="kitc" required>6</option>
-                                                    <option value="7" name="kitc" required>7</option>
-                                                    <option value="8" name="kitc" required>8</option>
-                                                    <option value="9" name="kitc" required>9</option>
-                                                    <option value="10" name="kitc" required>10</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
 
                                     <div class="col-xl-6">
                                         <div class="form-group row">
@@ -306,33 +268,6 @@ if(isset($_POST['add']))
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-                                    <div class="col-xl-6">
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label" name="balc">Balcony</label>
-                                            <div class="col-lg-9">
-                                                <!-- <select class="form-control" required name="stype" name="bath"> -->
-                                                <select class="form-control" name="balc">
-                                                    <option value="" name="">Select Balcony</option>
-                                                    <option value="1" name="balc" required>1</option>
-                                                    <option value="2" name="balc" required>2</option>
-                                                    <option value="3" name="balc" required>3</option>
-                                                    <option value="4" name="balc" required>4</option>
-                                                    <option value="5" name="balc" required>5</option>
-                                                    <option value="6" name="balc" required>6</option>
-                                                    <option value="7" name="balc" required>7</option>
-                                                    <option value="8" name="balc" required>8</option>
-                                                    <option value="9" name="balc" required>9</option>
-                                                    <option value="10" name="balc" required>10</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                 </div>
 
 
@@ -370,12 +305,12 @@ if(isset($_POST['add']))
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
+                                        <!-- <div class="form-group row">
 											<label class="col-lg-3 col-form-label">Address</label>
 											<div class="col-lg-9">
 												<input type="text" class="form-control" name="loc" placeholder="Enter Address, eg, 10 Malibonge Drive, Ext 7">
 											</div>
-										</div>
+										</div> -->
 
 
                                     </div>
@@ -414,12 +349,11 @@ if(isset($_POST['add']))
 
 
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">Area Size</label>
-                                            <div class="col-lg-9">
-                                                <input type="text" class="form-control" name="asize" required
-                                                    placeholder="Enter Area Size (in square meters)">
-                                            </div>
-                                        </div>
+											<label class="col-lg-3 col-form-label">Address</label>
+											<div class="col-lg-9">
+												<input type="text" class="form-control" name="loc" placeholder="Enter Address, eg, 10 Malibonge Drive, Ext 7">
+											</div>
+										</div>
 
                                     </div>
 
@@ -474,146 +408,236 @@ if(isset($_POST['add']))
                                 </style>
 
 
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label">Extra Features</label>
-                                    <div class="col-lg-9">
-                                        <div class="checkbox-group">
-                                            <div class="row">
+<div class="form-group row">
+  <label class="col-lg-2 col-form-label" for="security-checkbox">Extra Features</label>
+  <div class="col-lg-10">
+    <div class="checkbox-group">
+      <div class="row">
+        <div class="col-md-3">
+          <h6>Security</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="security-checkbox" name="feature[]" value="CCTV Surveillance">
+            <label class="form-check-label" for="security-checkbox">CCTV Surveillance</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gated-checkbox" name="feature[]" value="Gated Community">
+            <label class="form-check-label" for="gated-checkbox">Gated Property</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fenced-checkbox" name="feature[]" value="Fenced Property">
+            <label class="form-check-label" for="fenced-checkbox">Fenced Property</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fire-alarm-checkbox" name="feature[]" value="Fire Alarm System">
+            <label class="form-check-label" for="fire-alarm-checkbox">Fire Alarm System</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="security-staff-checkbox" name="feature[]" value="24/7 Security Staff">
+            <label class="form-check-label" for="security-staff-checkbox">24/7 Security Staff</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="intercom-checkbox" name="feature[]" value="Intercom Facility">
+            <label class="form-check-label" for="intercom-checkbox">Intercom Facility</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="access-control-checkbox" name="feature[]" value="Access Control System">
+            <label class="form-check-label" for="access-control-checkbox">Access Control System</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="security-cameras-checkbox" name="feature[]" value="Security Cameras">
+            <label class="form-check-label" for="security-cameras-checkbox">Security Cameras</label>
+          </div>
+          <!-- Add more security-related checkboxes here -->
+        </div>
 
-                                                <div class="col-md-4">
-                                                    <h6>Security</h6>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="CCTV Surveillance">
-                                                        <label class="form-check-label">CCTV Surveillance</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Gated Community">
-                                                        <label class="form-check-label">Gated Property</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Fenced Property">
-                                                        <label class="form-check-label">Fenced Property</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Fire Alarm System">
-                                                        <label class="form-check-label">Fire Alarm System</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="24/7 Security Staff">
-                                                        <label class="form-check-label">24/7 Security Staff</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Intercom Facility">
-                                                        <label class="form-check-label">Intercom Facility</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Access Control System">
-                                                        <label class="form-check-label">Access Control System</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Security Cameras">
-                                                        <label class="form-check-label">Security Cameras</label>
-                                                    </div>
-                                                    <!-- Add more security-related checkboxes here -->
-                                                </div>
 
-                                                
-                                                <div class="col-md-4">
-                                                    <h6>Facilities</h6>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Clubhouse">
-                                                        <label class="form-check-label">Clubhouse</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Parking">
-                                                        <label class="form-check-label">Parking</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Diski">
-                                                        <label class="form-check-label">Diski</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Gym">
-                                                        <label class="form-check-label">Gym</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Handicap Available">
-                                                        <label class="form-check-label">Handicap Available</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Pet Friendly">
-                                                        <label class="form-check-label">Pet Friendly</label>
-                                                    </div>
-                                                    <!-- Add more facility-related checkboxes here -->
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <h6>Features & Fittings</h6>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Aircon">
-                                                        <label class="form-check-label">Aircon</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Built-in Braai">
-                                                        <label class="form-check-label">Built-in Braai</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Built-in Cupboards">
-                                                        <label class="form-check-label">Built-in Cupboards</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Wifi">
-                                                        <label class="form-check-label">Wifi</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Furnished">
-                                                        <label class="form-check-label">Furnished</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Garden">
-                                                        <label class="form-check-label">Garden</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Pool">
-                                                        <label class="form-check-label">Pool</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Outside Sink">
-                                                        <label class="form-check-label">Outside Sink</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="feature[]"
-                                                            value="Satellite">
-                                                        <label class="form-check-label">Satellite</label>
-                                                    </div>
-                                                    <!-- Add more checkboxes for column 3 here -->
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="col-md-3">
+          <h6>Facilities</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="clubhouse-checkbox" name="feature[]" value="Clubhouse">
+            <label class="form-check-label" for="clubhouse-checkbox">Clubhouse</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="parking-checkbox" name="feature[]" value="Parking">
+            <label class="form-check-label" for="parking-checkbox">Parking</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="covered-parking-checkbox" name="feature[]" value="Covered Parking">
+            <label class="form-check-label" for="covered-parking-checkbox">Covered Parking</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="laundry-checkbox" name="feature[]" value="Laundry">
+            <label class="form-check-label" for="laundry-checkbox">Laundry</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="pet-friendly-checkbox" name="feature[]" value="Pet Friendly">
+            <label class="form-check-label" for="pet-friendly-checkbox">Pet Friendly</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="handicap-checkbox" name="feature[]" value="Handicap Available">
+            <label class="form-check-label" for="handicap-checkbox">Handicap Available</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="water-checkbox" name="feature[]" value="Water">
+            <label class="form-check-label" for="water-checkbox">Water</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="solar-checkbox" name="feature[]" value="Solar">
+            <label class="form-check-label" for="solar-checkbox">Solar</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fixed-electricity-checkbox" name="feature[]" value="Fixed Electricity">
+            <label class="form-check-label" for="fixed-electricity-checkbox">Fixed Electricity</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="prepaid-electricity-checkbox" name="feature[]" value="Prepaid Electricity">
+            <label class="form-check-label" for="prepaid-electricity-checkbox">Prepaid Electricity</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="backup-generator-checkbox" name="feature[]" value="Backup Generator">
+            <label class="form-check-label" for="backup-generator-checkbox">Backup Generator</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="backup-water-checkbox" name="feature[]" value="Backup Water">
+            <label class="form-check-label" for="backup-water-checkbox">Backup Water</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="ensuite-bathroom-checkbox" name="feature[]" value="Ensuite Bathroom">
+            <label class="form-check-label" for="ensuite-bathroom-checkbox">Ensuite Bathroom</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="stove-checkbox" name="feature[]" value="Stove">
+            <label class="form-check-label" for="stove-checkbox">Stove</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="shower-checkbox" name="feature[]" value="Shower">
+            <label class="form-check-label" for="shower-checkbox">Shower</label>
+          </div>
+          <!-- Add more facility-related checkboxes here -->
+        </div>
+
+        <div class="col-md-3">
+          <h6>Features & Fittings</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="aircon-checkbox" name="feature[]" value="Aircon">
+            <label class="form-check-label" for="aircon-checkbox">Aircon</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="heating-checkbox" name="feature[]" value="Heating">
+            <label class="form-check-label" for="heating-checkbox">Heating</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="balcony-checkbox" name="feature[]" value="Balcony">
+            <label class="form-check-label" for="balcony-checkbox">Balcony</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="braai-checkbox" name="feature[]" value="Built-in Braai">
+            <label class="form-check-label" for="braai-checkbox">Built-in Braai</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="cupboard-checkbox" name="feature[]" value="Built-in Cupboard">
+            <label class="form-check-label" for="cupboard-checkbox">Built-in Cupboard</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="wifi-checkbox" name="feature[]" value="WiFi">
+            <label class="form-check-label" for="wifi-checkbox">WiFi</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="furnished-checkbox" name="feature[]" value="Furnished">
+            <label class="form-check-label" for="furnished-checkbox">Furnished</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="garden-checkbox" name="feature[]" value="Garden">
+            <label class="form-check-label" for="garden-checkbox">Garden</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="sink-checkbox" name="feature[]" value="Outside Sink">
+            <label class="form-check-label" for="sink-checkbox">Outside Sink</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="satellite-tv-checkbox" name="feature[]" value="Satellite TV">
+            <label class="form-check-label" for="satellite-tv-checkbox">Satellite TV</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="dishwasher-checkbox" name="feature[]" value="Dishwasher">
+            <label class="form-check-label" for="dishwasher-checkbox">Dishwasher</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="microwave-checkbox" name="feature[]" value="Microwave">
+            <label class="form-check-label" for="microwave-checkbox">Microwave</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="oven-checkbox" name="feature[]" value="Oven">
+            <label class="form-check-label" for="oven-checkbox">Oven</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="fridge-checkbox" name="feature[]" value="Fridge">
+            <label class="form-check-label" for="fridge-checkbox">Fridge</label>
+          </div>
+          <!-- Add more feature & fitting-related checkboxes here -->
+        </div>
+
+        <div class="col-md-3">
+          <h6>Nearby</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gym-checkbox" name="feature[]" value="Gym">
+            <label class="form-check-label" for="gym-checkbox">Gym</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="pool-checkbox" name="feature[]" value="Swimming Pool">
+            <label class="form-check-label" for="pool-checkbox">Swimming Pool</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="diski-checkbox" name="feature[]" value="Diski">
+            <label class="form-check-label" for="diski-checkbox">Diski</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="playground-checkbox" name="feature[]" value="Playground">
+            <label class="form-check-label" for="playground-checkbox">Playground</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="tennis-court-checkbox" name="feature[]" value="Tennis Court">
+            <label class="form-check-label" for="tennis-court-checkbox">Tennis Court</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="pet-park-checkbox" name="feature[]" value="Pet Park">
+            <label class="form-check-label" for="pet-park-checkbox">Pet Park</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="recreational-park-checkbox" name="feature[]" value="Recreational Park">
+            <label class="form-check-label" for="recreational-park-checkbox">Recreational Park</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="mall-checkbox" name="feature[]" value="Mall">
+            <label class="form-check-label" for="mall-checkbox">Mall</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="shopping-center-checkbox" name="feature[]" value="Shopping Center">
+            <label class="form-check-label" for="shopping-center-checkbox">Shopping Center</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="spazas-checkbox" name="feature[]" value="Fridge">
+            <label class="form-check-label" for="spazas-checkbox">Spazas</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="schools-checkbox" name="feature[]" value="Fridge">
+            <label class="form-check-label" for="schools-checkbox">Schools</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="police-checkbox" name="feature[]" value="Fridge">
+            <label class="form-check-label" for="police-checkbox">Police Station</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="library-checkbox" name="feature[]" value="Fridge">
+            <label class="form-check-label" for="library-checkbox">Library</label>
+          </div>
+          <!-- Add more additional-related checkboxes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
                                 <h5 class="text-secondary">Image & Status</h5>

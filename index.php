@@ -3,8 +3,17 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-		
-?>
+// if(!isset($_SESSION['uemail']))
+// {
+//     header("location:login.php");
+// }
+// else
+// {
+//     $uname = $_SESSION['uname'];
+//     echo $uname;
+// }
+// ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,231 +64,9 @@ include("config.php");
 
 </head>
 
-<!-- Chat Bot Code -->
-<!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
-  <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
-  <script>
-      WAWidget.init({
-          el: document.querySelector("#assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"),
-          endpoint: "https://assistant.workativ.com/widget",
-          widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
-          openByDefault: false
-      });
-  </script> -->
-<!-- Chat Bot Code End -->
-
-
-
-<!-- Chatbot Widget Container --
-<div id="chatbot-widget-container">
-  <div id="chatbot-widget-header">
-    <h2>Chat with me!</h2>
-    <button id="chatbot-widget-toggle"><i class="fas fa-chevron-up"></i></button>
-  </div>
-  <div id="chatbot-widget-body">
-    <div id="chatbot-widget-messages"></div>
-    <form id="chatbot-widget-form">
-      <input type="text" id="chatbot-widget-input" autocomplete="off">
-      <button type="submit"><i class="fas fa-paper-plane"></i></button>
-    </form>
-  </div>
-</div>
-
-<!-- Chatbot Widget Styles --
-
-
-
-<style>
-#chatbot-widget-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px #ccc;
-  z-index: 9999;
-}
-
-#chatbot-widget-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eee;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  border-radius: 5px 5px 0px 0px;
-}
-
-#chatbot-widget-header h2 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: normal;
-}
-
-#chatbot-widget-toggle {
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  outline: none;
-}
-
-#chatbot-widget-body {
-  display: none;
-  padding: 10px;
-}
-
-#chatbot-widget-messages {
-  height: 200px;
-  overflow-y: scroll;
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  flex-direction: column;
-  scroll-behavior: smooth; /* add this line */
-}
-
-.chatbot-widget-message {
-  max-width: 70%;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  line-height: 1.5;
-  box-shadow: 0px 0px 5px #ccc;
-}
-
-.chatbot-widget-user-message {
-  align-self: flex-end;
-  background-color: #d1e8ff;
-  color: #000;
-}
-
-.chatbot-widget-chatbot-message {
-  align-self: flex-start;
-  background-color: #fff;
-  color: #000;
-}
-
-#chatbot-widget-form {
-  display: flex;
-  margin-top: 10px;
-}
-
-#chatbot-widget-form input[type="text"] {
-  flex: 1;
-  padding: 12px;
-  border: solid 1px #ccc;
-  border-radius: 10px;
-  background-color: #F4F4F4;
-  height: 50px;
-  font-size: 16px;
-  color: #333;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-}
-
-#chatbot-widget-form input[type="text"]:focus {
-  outline: none;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-#chatbot-widget-form button[type="submit"] {
-  padding: 12px 20px;
-  border: none;
-  background-color: #fff;
-  color: #000;
-  border-radius: 0px 50px 50px 0px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-
-</style>
-
-<!-- Chatbot Widget Script --
-<script>
-  const chatbotWidgetContainer = document.getElementById('chatbot-widget-container');
-  const chatbotWidgetHeader = document.getElementById('chatbot-widget-header');
-  const chatbotWidgetToggle = document.getElementById('chatbot-widget-toggle');
-  const chatbotWidgetBody = document.getElementById('chatbot-widget-body');
-  const chatbotWidgetMessages = document.getElementById('chatbot-widget-messages');
-  const chatbotWidgetForm = document.getElementById('chatbot-widget-form');
-  const chatbotWidgetInput = document.getElementById('chatbot-widget-input');
-
-  function showChatbotWidget() {
-    chatbotWidgetBody.style.display = 'block';
-    chatbotWidgetToggle.textContent = '-';
-  }
-
-  function hideChatbotWidget() {
-    chatbotWidgetBody.style.display = 'none';
-    chatbotWidgetToggle.textContent = '+';
-  }
-
-  function toggleChatbotWidget() {
-    if (chatbotWidgetBody.style.display === 'none') {
-      showChatbotWidget();
-    } else{
-hideChatbotWidget();
-}
-}
-
-function addMessageToWidget(message, sender) {
-  const messageDiv = document.createElement('div');
-  messageDiv.classList.add('chatbot-widget-message');
-  if (sender === 'user') {
-    messageDiv.classList.add('chatbot-widget-user-message');
-    messageDiv.innerHTML = `<div class="chatbot-widget-user-message-bubble">${message}</div>`;
-  } else {
-    messageDiv.classList.add('chatbot-widget-chatbot-message');
-    messageDiv.innerHTML = `<div class="chatbot-widget-chatbot-message-bubble">${message}</div>`;
-  }
-  chatbotWidgetMessages.appendChild(messageDiv);
-}
-
-chatbotWidgetToggle.addEventListener('click', toggleChatbotWidget);
-
-chatbotWidgetForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const userMessage = chatbotWidgetInput.value;
-  addMessageToWidget(userMessage, 'user');
-  chatbotWidgetInput.value = '';
-  
-  if (userMessage.toLowerCase().includes('hello')) {
-    addMessageToWidget('Hi there!', 'chatbot');
-  } else if (userMessage.toLowerCase().includes('how are you') || userMessage.toLowerCase().includes('how are you doing') || userMessage.toLowerCase().includes('how do you do')) {
-    addMessageToWidget('I am a chatbot, so I am always good. How can I assist you?', 'chatbot');
-  } else if (userMessage.toLowerCase().includes('bye')) {
-    addMessageToWidget('Goodbye!', 'chatbot');
-    setTimeout(hideChatbotWidget, 1000); // hide the widget after 1 second
-  } else if (userMessage.toLowerCase().includes('exit')) {
-    hideChatbotWidget();
-  } else {
-    addMessageToWidget('I am sorry, I did not understand. Can you please try again?', 'chatbot');
-  }
-});
-
-
-</script>
-
-End of Chatbot Widget Script -->
-
 
 
 <body>
-
-    <!--	Page Loader  -->
-    <!--<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>  -->
-    <!--	Page Loader  -->
 
     <div id="page-wrapper">
         <div class="row">
@@ -289,13 +76,13 @@ End of Chatbot Widget Script -->
 
             <!--	Banner Start   -->
             <div class="overlay-black w-100 slider-banner1 position-relative animate__animated animate__slideInDown"
-                style="background-image: url('images/banner/04.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+                style="background-image: url('images/banner/05.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-lg-12">
                             <div class="text-white">
                                 <h1 class="mb-4 animate__animated animate__slideInRight"><span
-                                        class="text-primary">Township</span>
+                                        class="text-warning">Township</span>
                                     Properties </h1>
                                 <h1 class="mb-4 animate__animated animate__slideInLeft"><span
                                         class="text-warning">Welcome</span> <span>To Your</span>
@@ -320,14 +107,14 @@ End of Chatbot Widget Script -->
                                                 <select class="form-control" name="stype">
                                                     <option value="">Select Status</option>
                                                     <option value="Rent">Rent</option>
-                                                    <option value="Sale">Sale</option>
+                                                    <!-- <option value="Sale">Sale</option> -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-lg-6">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="city"
-                                                    placeholder="Enter City" required>
+                                                    placeholder="Enter Kasi/City" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-lg-2">
@@ -493,13 +280,13 @@ End of Chatbot Widget Script -->
                             <h2 class="text-secondary double-down-line text-center mb-4">Recent Property</h2>
                         </div>
                         - <div class="col-md-6">
-                        <ul class="nav property-btn float-right" id="pills-tab" role="tablist">
+                            <!-- <ul class="nav property-btn float-right" id="pills-tab" role="tablist">
                             <li class="nav-item"> <a class="nav-link py-3 active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">New</a> </li>
                             <li class="nav-item"> <a class="nav-link py-3" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Featured</a> </li>
                             <li class="nav-item"> <a class="nav-link py-3" id="pills-contact-tab2" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Top Sale</a> </li>
                             <li class="nav-item"> <a class="nav-link py-3" id="pills-contact-tab3" data-toggle="pill" href="#pills-resturant" role="tab" aria-controls="pills-contact" aria-selected="false">Best Sale</a> </li>
-                        </ul>
-                    </div> -
+                        </ul> -->
+                        </div> -
                         <div class="col-md-12">
                             <div class="tab-content mt-4" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -534,11 +321,21 @@ End of Chatbot Widget Script -->
                                                     </div>
                                                     <div class="bg-gray quantity px-4 pt-4 text-center">
                                                         <ul>
-                                                            <!-- <li><span><?php echo $row['12'];?></span> Sqft</li> -->
-                                                            <li><span><?php echo $row['6'];?></span> Rooms</li>
-                                                            <li><span><?php echo $row['7'];?></span> Baths</li>
-                                                            <li><span><?php echo $row['9'];?></span> Kitchen</li>
-                                                            <li><span><?php echo $row['8'];?></span> Balcony</li>
+                                                            <!-- <li><span
+                                                                    class="text-secondary"><?php echo $row['12'];?></span>
+                                                                Meters</li> -->
+                                                            <!-- <li><span
+                                                                    class="text-secondary"><?php echo $row['6'];?></span>
+                                                                Bedroom(s)</li> -->
+                                                            <!-- <li><span
+                                                                    class="text-secondary">R<?php echo $row['13'];?></span>
+                                                                Rent <?php echo $row['15'];?></li> -->
+                                                            <li><span
+                                                                    class="text-secondary">R<?php echo $row['13'];?></span>
+                                                                Rent</li>
+                                                            <!-- <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
+                                        <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
+                                        <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li> -->
                                                         </ul>
                                                     </div>
 
@@ -566,7 +363,7 @@ End of Chatbot Widget Script -->
 
             <!--	Why Choose Us -->
             <div class="full-row living bg-one overlay-secondary-half"
-                style="background-image: url('images/haddyliving.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+                style="background-image: url('images/ekasi.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
@@ -625,7 +422,7 @@ End of Chatbot Widget Script -->
                     <div class="col-md-4">
                         <div class="icon-thumb-one text-center mb-5">
                             <div class="bg-primary text-white rounded-circle position-absolute z-index-9">1</div>
-                            <div class="left-arrow"><i class="flaticon-investor flat-medium icon-primary" aria-hidden="true"></i></div>
+                            <div class="left-arrow"><i class="fas fa-invest flat-medium icon-primary" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Discussion</h5>
                             <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
                         </div>
@@ -633,7 +430,7 @@ End of Chatbot Widget Script -->
                     <div class="col-md-4">
                         <div class="icon-thumb-one text-center mb-5">
                             <div class="bg-primary text-white rounded-circle position-absolute z-index-9">2</div>
-                            <div class="left-arrow"><i class="flaticon-search flat-medium icon-primary" aria-hidden="true"></i></div>
+                            <div class="left-arrow"><i class="fas fa-search flat-medium icon-primary" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Files Review</h5>
                             <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
                         </div>
@@ -641,7 +438,7 @@ End of Chatbot Widget Script -->
                     <div class="col-md-4">
                         <div class="icon-thumb-one text-center mb-5">
                             <div class="bg-primary text-white rounded-circle position-absolute z-index-9">3</div>
-                            <div><i class="flaticon-handshake flat-medium icon-primary" aria-hidden="true"></i></div>
+                            <div><i class="fas fa-handshake flat-medium icon-primary" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Acquire</h5>
                             <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
                         </div>

@@ -281,9 +281,10 @@ include("config.php");
 
                                     <form method="post" action="propertygrid.php">
                                     <div class="form-group">
-                                            <label for="stype">For Rent or Sale:</label>
+                                            <!-- <label for="stype">For Rent or Sale:</label> -->
+                                            <label for="stype">For Rent</label>
                                             <input type="text" name="stype" id="stype" class="form-control"
-                                                placeholder="Rent or Sale">
+                                                placeholder="Rent">
                                         </div>
 
                                         <div class="form-group">

@@ -206,22 +206,22 @@ if(isset($_POST['send']))
                                 <table class="w-100">
                                     <tbody>
                                         <tr>
-                                            <td>Rent :</td>
+                                            <td>Rent:</td>
                                             <td class="text-capitalize">R<?php echo $row['13'];?></td>
-                                            <td>Location :</td>
+                                            <td>Location:</td>
                                             <td class="text-capitalize"><?php echo $row['17'] . ', ' . $row['18']; ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Rent Per :</td>
+                                            <td>Rent Per:</td>
                                             <td class="text-capitalize"><?php echo $row['15'];?></td>
-                                            <td>Posted By :</td>
+                                            <td>Posted By:</td>
                                             <td class="text-capitalize"><?php echo $row['uname'];?></td>
                                         </tr>
                                         <tr>
-                                            <td>Deposit Is :</td>
+                                            <td>Deposit Is:</td>
                                             <td class="text-capitalize">R<?php echo $row['14'];?></td>
-                                            <td>Date Posted :</td>
+                                            <td>Date Posted:</td>
                                             <!-- <td class="text-capitalize"><?php echo $row['31'];?></td> -->
                                             <td class="text-capitalize">
                                                 <?php $date = date("Y-m-d", strtotime($row['31'])); echo $date;?></td>
@@ -235,11 +235,14 @@ if(isset($_POST['send']))
                             <div class="property-details">
                                 <div class="bg-gray property-quantity px-4 pt-4 w-100">
                                     <ul>
-                                        <li><span class="text-secondary"><?php echo $row['12'];?></span> Meters</li>
-                                        <li><span class="text-secondary"><?php echo $row['6'];?></span> Bedroom</li>
-                                        <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
+                                        <li><span class="text-secondary"><?php echo $row['12'];?></span>Meters</li>
+                                        <li><span class="text-secondary"><?php echo $row['6'];?></span>Room(s)</li>
+                                        <!-- <li><span class="text-secondary">R<?php echo $row['13'];?></span> Rent <?php echo $row['15'];?></li> -->
+                                        <li><span class="text-secondary">R<?php echo $row['13'];?></span>Rent</li>
+                                        <li><span class="text-secondary">R<?php echo $row['14'];?></span>Deposit</li>
+                                        <!-- <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
                                         <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
-                                        <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li>
+                                        <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li> -->
                                     </ul>
                                 </div>
                                 <h4 class="text-secondary my-4">Description</h4>
@@ -250,21 +253,21 @@ if(isset($_POST['send']))
                                     <table class="w-100">
                                         <tbody>
                                             <tr>
-                                                <td>Property Type :</td>
+                                                <td>Property Type:</td>
                                                 <td class="text-capitalize"><?php echo $row['3'];?></td>
-                                                <td>Listing Type :</td>
+                                                <td>Listing Type:</td>
                                                 <td class="text-capitalize"><?php echo $row['5'];?></td>
                                             </tr>
                                             <tr>
-                                                <td>Status :</td>
+                                                <td>Status:</td>
                                                 <td class="text-capitalize"><?php echo $row['26'];?></td>
-                                                <td>Move In :</td>
+                                                <td>Move In:</td>
                                                 <td class="text-capitalize"><?php echo $row['32'];?></td>
                                             </tr>
                                             <tr>
-                                                <td>City :</td>
+                                                <td>City:</td>
                                                 <td class="text-capitalize"><?php echo $row['17'];?></td>
-                                                <td>Province Is :</td>
+                                                <td>Province Is:</td>
                                                 <td class="text-capitalize"><?php echo $row['18'];?></td>
                                             </tr>
 
@@ -280,8 +283,8 @@ if(isset($_POST['send']))
                                 <div class="form-group row">
                                     <div class="col-lg-9">
                                         <div class="checkbox-group">
-                                            <div class="row">
-                                                <div class="col-md-4 mb-4 mb-md-0">
+                                            <div class="row" style="width: 50rem">
+                                                <div class="col-md-3 mb-4 mb-md-0">
                                                     <!-- Add the "mb-4 mb-md-0" class -->
                                                     <h6>Security</h6>
                                                     <?php
@@ -300,11 +303,11 @@ if(isset($_POST['send']))
                                                     ?>
                                                 </div>
 
-                                                <div class="col-md-4 mb-4 mb-md-0">
+                                                <div class="col-md-3 mb-4 mb-md-0">
                                                     <!-- Add the "mb-4 mb-md-0" class -->
                                                     <h6>Facilities</h6>
                                                     <?php
-                                                    $facilitiesFeatures = ['Clubhouse', 'Parking', 'Diski', 'Gym', 'Handicap Available', 'Pet Friendly'];
+                                                    $facilitiesFeatures = ['Clubhouse', 'Parking', 'Covered Parking', 'Laundry', 'Pet Friendly', 'Handicap Available', 'Water', 'Solar', 'Fixed Electricity', 'Prepaid Electricity', 'Backup Generator', 'Backup Water', 'Ensuite Bathroom', 'Stove', 'Shower'];
                                                     $facilitiesSelected = array_intersect($facilitiesFeatures, $features);
                                                     if (!empty($facilitiesSelected)) {
                                                         echo '<ul>';
@@ -318,11 +321,11 @@ if(isset($_POST['send']))
                                                     ?>
                                                 </div>
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-3 mb-4 mb-md-0">
                                                     <!-- No change to the third column -->
                                                     <h6>Features & Fittings</h6>
                                                     <?php
-                                                    $featuresFittingsFeatures = ['Aircon', 'Built-in Braai', 'Built-in Cupboards', 'Wifi', 'Furnished', 'Garden', 'Pool', 'Outside Sink', 'Satellite'];
+                                                    $featuresFittingsFeatures = ['Aircon', 'Heating', 'Balcony', 'Built-in Braai', 'Built-in Cupboards', 'WiFi', 'Furnished', 'Garden', 'Outside Sink', 'Satellite', 'Dishwasher', 'Microwave', 'Oven', 'Fridge'];
                                                     $featuresFittingsSelected = array_intersect($featuresFittingsFeatures, $features);
                                                     if (!empty($featuresFittingsSelected)) {
                                                         echo '<ul>';
@@ -335,6 +338,25 @@ if(isset($_POST['send']))
                                                     }
                                                     ?>
                                                 </div>
+                                            
+                                                <div class="col-md-3 mb-4 mb-md-0">
+                                                    <!-- No change to the third column -->
+                                                    <h6>Nearby</h6>
+                                                    <?php
+                                                    $recreationalFeatures = ['Swimming Pool', 'Tennis Court', 'Playground', 'Golf Course', 'Pet Park', 'Recreational Park', 'Mall', 'Shopping Center', 'Spazas', 'Schools', 'Police Station', 'Library'];
+                                                    $recreationalSelected = array_intersect($recreationalFeatures, $features);
+                                                    if (!empty($recreationalSelected)) {
+                                                        echo '<ul>';
+                                                        foreach ($recreationalSelected as $feature) {
+                                                            echo '<li>' . htmlspecialchars($feature) . '</li>';
+                                                        }
+                                                        echo '</ul>';
+                                                    } else {
+                                                        echo '<p>No added features.</p>';
+                                                    }
+                                                    ?>
+                                                </div>
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -360,14 +382,14 @@ if(isset($_POST['send']))
                                     <img src="admin/property/<?php echo $row['27'];?>" alt="Not Available"> </div>
                             </div> -->
 
-                                <div class="text-center d-sm-flex flex-sm-column">
+                                <!-- <div class="text-center d-sm-flex flex-sm-column">
                                     <h5
                                         class="mt-5 mb-4 text-secondary double-down-line-left text-center text-lg-left">
                                         Contact Agent</h5>
                                     <div class="agent-contact pt-60">
                                         <div class="row justify-content-center">
                                             <div class="col-sm-4 col-lg-3">
-                                                <!-- <h5 class="hide-on-desktop"> Contact Agent</h5> -->
+                                                <h5 class="hide-on-desktop"> Contact Agent</h5>
                                                 <img src="admin/user/<?php echo $row['uimage']; ?>" alt=""
                                                     style="width: 170px; height: 200px;" width="170">
                                             </div>
@@ -397,7 +419,7 @@ if(isset($_POST['send']))
 
                                                 </div>
                                             </div> 
-                                            <!-- <div class="col-md-12 col-lg-12">
+                                            <div class="col-md-12 col-lg-12">
                                                 <form class="bg-gray-form mt-5" action="#" method="post">
                                                     <div class="row">
                                                         <div class="col-md-5">
@@ -442,10 +464,10 @@ if(isset($_POST['send']))
                                                         </div>
                                                     </div>
                                                 </form>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>

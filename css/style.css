@@ -11,6 +11,15 @@
   box-shadow: inset 0 0 3px #ececec; 
 }
 
+
+/* NEW CSS 07 July 2023 */
+
+.custom-width {
+    width: 68rem !important;
+    /* Adjust the width value as needed */
+}
+
+
 /*=========================================================
  Color Settings
  ==========================================================*/
