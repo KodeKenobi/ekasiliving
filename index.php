@@ -93,12 +93,22 @@ include("config.php");
                                             <div class="form-group">
                                                 <select class="form-control" name="type">
                                                     <option value="">Select Type</option>
+<<<<<<< HEAD
+                                                    <option value="Apartment">Apartment</option>
+                                                    <option value="Room">Room</option>
+                                                    <option value="Back Room Normal">Back Room (Normal)</option>
+                                                    <option value="Back Room Garage">Back Room (Garage)</option>
+                                                    <option value="Flat">Flat</option>
+                                                    <option value="House">House</option>
+                                                    <option value="Bachelor">Bachelor</option>
+=======
                                                     <option value="Room">Room</option>
                                                     <option value="Back Room">Back Room</option>
                                                     <option value="Apartment">Apartment</option>
                                                     <option value="Flat">Flat</option>
                                                     <option value="House">House</option>
                                                     <option value="Cottage">Cottage</option>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </select>
                                             </div>
                                         </div>
@@ -301,11 +311,19 @@ include("config.php");
                                         <div class="col-md-6 col-lg-4">
                                             <div class="featured-thumb hover-zoomer mb-4">
                                                 <div class="overlay-black overflow-hidden position-relative"> <img
+<<<<<<< HEAD
+                                                        src="admin/property/<?php echo $row['21'];?>" alt="pimage"
+                                                        style="height:340px">
+                                                    <div class="featured bg-primary text-white">New</div>
+                                                    <div class="sale bg-secondary text-white text-capitalize">For
+                                                        <?php echo $row['6'];?></div>
+=======
                                                         src="admin/property/<?php echo $row['20'];?>" alt="pimage"
                                                         style="height:340px">
                                                     <div class="featured bg-primary text-white">New</div>
                                                     <div class="sale bg-secondary text-white text-capitalize">For
                                                         <?php echo $row['5'];?></div>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     <!-- <div class="price text-primary"><b>$<?php echo $row['14'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div> -->
                                                 </div>
                                                 <div class="featured-thumb-data shadow-one text-center">
@@ -313,11 +331,19 @@ include("config.php");
                                                         <h5
                                                             class="text-secondary hover-text-primary mb-2 text-capitalize">
                                                             <a
+<<<<<<< HEAD
+                                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a>
+                                                        </h5>
+                                                        <span class="location text-capitalize"><i
+                                                                class="fas fa-map-marker-alt text-primary"></i>
+                                                            <?php echo $row['18'] . ', ' . $row['19'];?></span>
+=======
                                                                 href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
                                                         </h5>
                                                         <span class="location text-capitalize"><i
                                                                 class="fas fa-map-marker-alt text-primary"></i>
                                                             <?php echo $row['17'] . ', ' . $row['18'];?></span>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     </div>
                                                     <div class="bg-gray quantity px-4 pt-4 text-center">
                                                         <ul>
@@ -331,8 +357,17 @@ include("config.php");
                                                                     class="text-secondary">R<?php echo $row['13'];?></span>
                                                                 Rent <?php echo $row['15'];?></li> -->
                                                             <li><span
+<<<<<<< HEAD
+                                                                    class="text-secondary">R<?php echo $row['16'];?></span>
+                                                                Rent</li>
+                                                                <li><span
+                                                                    class="text-secondary">R<?php echo $row['8'];?></span>
+                                                                Deposit</li>
+                                                                <li><span class="text-secondary"><?php echo $row['7'];?></span>Room(s)</li>
+=======
                                                                     class="text-secondary">R<?php echo $row['13'];?></span>
                                                                 Rent</li>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                             <!-- <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
                                         <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
                                         <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li> -->

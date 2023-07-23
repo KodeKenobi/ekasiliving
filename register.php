@@ -164,18 +164,36 @@ if(isset($_REQUEST['reg']))
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="phone" class="form-control"
+<<<<<<< HEAD
+                                                placeholder="eg, +27630119876*" maxlength="10">
+=======
                                                 placeholder="Your Phone*" maxlength="10">
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="pass" class="form-control"
                                                 placeholder="Your Password*">
                                         </div>
 
+<<<<<<< HEAD
+                                        <!-- <div class="form-check-inline">
+=======
                                         <div class="form-check-inline">
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="utype" value="user"
                                                     checked>User
                                             </label>
+<<<<<<< HEAD
+                                        </div> -->
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="utype"
+                                                    value="agent">Landlord
+                                            </label>
+                                        </div>
+                                        <!-- <div class="form-check-inline disabled">
+=======
                                         </div>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
@@ -184,11 +202,16 @@ if(isset($_REQUEST['reg']))
                                             </label>
                                         </div>
                                         <div class="form-check-inline disabled">
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="utype"
                                                     value="builder">Builder
                                             </label>
+<<<<<<< HEAD
+                                        </div> -->
+=======
                                         </div>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                         <div class="form-group">
                                             <label class="col-form-label"><b>User Image</b></label>

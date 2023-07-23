@@ -1,8 +1,27 @@
 <?php 
+<<<<<<< HEAD
+ini_set('session.cache_limiter', 'public');
+session_cache_limiter(false);
+session_start();
+include("config.php");
+
+// Add this section to fetch the unique_identifier from the database
+if (isset($_SESSION['uemail'])) {
+    $uemail = $_SESSION['uemail'];
+    $query = "SELECT unique_identifier FROM user WHERE uemail = '$uemail' LIMIT 1";
+    $result = mysqli_query($con, $query); // Use the existing database connection variable '$conn'
+    $uniqueIdentifier = '';
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $uniqueIdentifier = $row['unique_identifier'];
+    }
+}
+=======
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");							
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 ?>
 
 <html lang="en" dir="ltr">
@@ -17,6 +36,34 @@ include("config.php");
 </head>
 
 <style>
+<<<<<<< HEAD
+  @media (max-width: 991px) {
+    .nav.item {
+      margin-left: 17px !important;
+      margin-top: -32px !important;
+    }
+    .ref {
+    margin-left: auto !important;
+    margin-top: -32px !important;
+    font-weight: bold;
+    }
+    .navbar-brand {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .navbar-brand img {
+    margin-right: 148px !important; /* Optional: Add some spacing between the logo and text */
+    height: 80px !important;
+  }
+  .navbar .navbar-toggler {
+    color: var(--theme-white-color);
+    background-color: var(--theme-gray-color);
+    margin-top: -10px !important;
+  }
+  }
+  
+=======
   @media (max-width: 767px) {
     .nav.item {
       margin-left: 17px;
@@ -31,6 +78,7 @@ include("config.php");
     margin-right: 208px !important; /* Optional: Add some spacing between the logo and text */
   }
   }
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 
 </style>
@@ -94,7 +142,11 @@ include("config.php");
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light p-0"> <a class="navbar-brand position-relative"
                             href="index.php"><img class="nav-logo animate__animated animate__slideInDown"
+<<<<<<< HEAD
+                                src="img_new/logo.png" alt="" style="height: 142px;"></a><b
+=======
                                 src="img_new/logo.png" alt="" style="height: 55px;"></a><b
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             class="animate__animated animate__slideInDown link-dark"
                             style="color:black; font-size:large;"><span><a href="" style="color:black;"></a></span></b>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -144,6 +196,26 @@ include("config.php");
 
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <?php  
+<<<<<<< HEAD
+                            if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
+                            ?>
+                                <?php if(isset($_SESSION['uname'])) { ?>
+                                    <a class="nav-link ref" href="profile.php">
+                                        <?php echo $_SESSION['uname']; ?>
+                                        <span style="margin-left: 5px;">
+                                            <i class="fa fa-cog" aria-hidden="true"></i>
+                                        </span>
+                                        <span><?php echo $uniqueIdentifier; ?></span>
+                                    </a>
+                                <?php } ?>
+                            <?php 
+                            } 
+                            ?>
+
+
+
+
+=======
                                 if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
                             ?>
                             <?php if(isset($_SESSION['uname'])) { ?>
@@ -154,6 +226,7 @@ include("config.php");
                             ?>
 
 
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             <!-- <?php if(isset($_SESSION['uemail'])) { ?>
                             <li><a href="#"><i
                                         class="fas fa-envelope text-primary mr-1"></i><?php echo $_SESSION['uemail']; ?></a>

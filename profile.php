@@ -1,3 +1,69 @@
+<<<<<<< HEAD
+<?php
+ini_set('session.cache_limiter', 'public');
+session_cache_limiter(false);
+session_start();
+include("config.php");
+if (!isset($_SESSION['uemail'])) {
+    header("location: login.php");
+}
+
+$error = '';
+$msg = '';
+
+// Phone number update handling
+if (isset($_POST['update_phone'])) {
+    $phone = $_POST['phone'];
+
+    // Perform validation and update the user's phone number in the database
+    // Ensure you sanitize and validate user inputs before updating the database
+    // Example: You can use prepared statements to prevent SQL injection
+
+    // Assuming you have a connection variable $con established with the database
+    $phone = mysqli_real_escape_string($con, $phone);
+
+    // Update the user's phone number in the database
+    $uid = $_SESSION['uid'];
+    $sql = "UPDATE user SET uphone='$phone' WHERE uid='$uid'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        $msg = "<p class='alert alert-success'>Phone number updated successfully.</p>";
+        $_SESSION['uphone'] = $phone; // Update the session variable with the new phone number
+    } else {
+        $error = "<p class='alert alert-warning'>Failed to update phone number.</p>";
+    }
+}
+
+// Profile update handling
+if (isset($_POST['update_profile'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+
+    // Perform validation and update the user's profile information in the database
+    // Ensure you sanitize and validate user inputs before updating the database
+    // Example: You can use prepared statements to prevent SQL injection
+
+    // Assuming you have a connection variable $con established with the database
+    $name = mysqli_real_escape_string($con, $name);
+    $email = mysqli_real_escape_string($con, $email);
+
+    // Update the user's profile information in the database
+    $uid = $_SESSION['uid'];
+    $sql = "UPDATE user SET uname='$name', uemail='$email' WHERE uid='$uid'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        $msg = "<p class='alert alert-success'>Profile updated successfully.</p>";
+        $_SESSION['uname'] = $name; // Update the session variable with the new name
+        $_SESSION['uemail'] = $email; // Update the session variable with the new email
+    } else {
+        $error = "<p class='alert alert-warning'>Failed to update profile.</p>";
+    }
+}
+?>
+
+=======
 <?php 
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
@@ -36,6 +102,7 @@ if(isset($_POST['insert']))
 	}
 }								
 ?>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,6 +137,12 @@ if(isset($_POST['insert']))
 
 <!--	Title
 	=========================================================-->
+<<<<<<< HEAD
+<title>Exclusive Kasi Living - Profile</title>
+</head>
+
+<body>
+=======
     <title>Exclusive Kasi Living - Profile</title>
 </head>
 
@@ -88,6 +161,7 @@ if(isset($_POST['insert']))
 
 <body>
 
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 <!--	Page Loader
 =============================================================
 <div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
@@ -97,6 +171,16 @@ if(isset($_POST['insert']))
 	  </div>
 	</div>
 </div>
+<<<<<<< HEAD
+-->
+
+<div id="page-wrapper">
+    <div class="row">
+        <!--	Header start  -->
+        <?php include("include/header.php");?>
+        <!--	Header end  -->
+
+=======
 --> 
 
 
@@ -106,6 +190,7 @@ if(isset($_POST['insert']))
 		<?php include("include/header.php");?>
         <!--	Header end  -->
         
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
         <!--	Banner   --->
         <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">
@@ -124,6 +209,101 @@ if(isset($_POST['insert']))
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+        <!--	Banner   --->
+
+
+        <!--	Profile Update Form   -->
+        <div class="full-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-secondary double-down-line text-center">Profile</h2>
+                    </div>
+                </div>
+                <div class="dashboard-personal-info p-5 bg-white">
+                    <form action="#" method="post">
+                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Profile Page Form</h5>
+                        <?php echo $msg; ?><?php echo $error; ?>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <h5 class="text-secondary border-bottom-on-white pb-3 mb-3">Edit Profile</h5>
+                                <div class="form-group">
+                                    <label for="edit-name">Name</label>
+                                    <input type="text" name="name" class="form-control" value="<?php echo $_SESSION['uname']; ?>" placeholder="Enter Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="edit-email">Email</label>
+                                    <input type="email" name="email" class="form-control" value="<?php echo $_SESSION['uemail']; ?>" placeholder="Enter Email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="edit-phone">Phone Number</label>
+                                    <input type="text" name="phone" class="form-control" value="<?php echo $_SESSION['uphone']; ?>" placeholder="Enter Phone" maxlength="10">
+                                </div>
+                                <input type="submit" class="btn btn-primary mb-4" name="update_profile" value="Update Profile">
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-5 col-md-12">
+                                <?php
+                                $uid = $_SESSION['uid'];
+                                $query = mysqli_query($con, "SELECT * FROM `user` WHERE uid='$uid'");
+                                while ($row = mysqli_fetch_array($query)) {
+                                ?>
+                                    <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['uimage']; ?>" alt="userimage">
+                                        <div class="mb-4 mt-3">
+
+                                        </div>
+
+                                        <div class="font-18">
+                                            <div class="mb-1 text-capitalize"><b>Name:</b> <?php echo $row['uname']; ?></div>
+                                            <div class="mb-1"><b>Email:</b> <?php echo $row['uemail']; ?></div>
+                                            <div class="mb-1 text-capitalize"><b>Phone:</b> <?php echo $row['uphone']; ?></div>
+                                            <div class="mb-1 text-capitalize"><b>Role:</b> <?php echo $row['utype']; ?></div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--	Profile Update Form   -->
+
+
+        <!--	Footer   start-->
+        <?php include("include/footer.php");?>
+        <!--	Footer   start-->
+
+        <!-- Scroll to top -->
+        <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a>
+        <!-- End Scroll To top -->
+    </div>
+</div>
+<!-- Wrapper End -->
+
+<!--	Js Link
+============================================================-->
+<script src="js/jquery.min.js"></script>
+<!--jQuery Layer Slider -->
+<script src="js/greensock.js"></script>
+<script src="js/layerslider.transitions.js"></script>
+<script src="js/layerslider.kreaturamedia.jquery.js"></script>
+<!--jQuery Layer Slider -->
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/tmpl.js"></script>
+<script src="js/jquery.dependClass-0.1.js"></script>
+<script src="js/draggable-0.1.js"></script>
+<script src="js/jquery.slider.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
+=======
          <!--	Banner   --->
 		 
 		 
@@ -218,3 +398,4 @@ if(isset($_POST['insert']))
 <script src="js/custom.js"></script>
 </body>
 </html>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936

@@ -21,8 +21,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `developers`
 --
+<<<<<<< HEAD
+CREATE DATABASE IF NOT EXISTS `ekasiloz_developers` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ekasiloz_developers`;
+=======
 CREATE DATABASE IF NOT EXISTS `developers` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `developers`;
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 -- --------------------------------------------------------
 
@@ -152,15 +157,31 @@ INSERT INTO `feedback` (`fid`, `uid`, `fdescription`, `status`, `date`) VALUES
 -- Table structure for table `property`
 --
 
+<<<<<<< HEAD
+-- Drop the table if it exists
+DROP TABLE IF EXISTS `property`;
+
+-- Create the property table with the custom_pid column
+CREATE TABLE `property` (
+  `pid` int(50) NOT NULL AUTO_INCREMENT,
+  `custom_pid` varchar(50) NOT NULL,
+=======
 DROP TABLE IF EXISTS `property`;
 CREATE TABLE `property` (
   `pid` int(50) NOT NULL,
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
   `title` varchar(200) NOT NULL,
   `pcontent` longtext NOT NULL,
   `type` varchar(100) NOT NULL,
   `bhk` varchar(50) NOT NULL,
   `stype` varchar(100) NOT NULL,
+<<<<<<< HEAD
+  `bedroom` varchar(50) NOT NULL,
+  `deposit` varchar(50) NOT NULL,
+  `per` varchar(50) NOT NULL,
+=======
   `bedroom` int(50) NOT NULL,
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
   `bathroom` int(50) NOT NULL,
   `balcony` int(50) NOT NULL,
   `kitchen` int(50) NOT NULL,
@@ -183,6 +204,30 @@ CREATE TABLE `property` (
   `topmapimage` varchar(300) NOT NULL,
   `groundmapimage` varchar(300) NOT NULL,
   `totalfloor` varchar(50) NOT NULL,
+<<<<<<< HEAD
+  `availabledate` varchar(50) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a trigger to automatically set the custom_pid value based on UUID
+DELIMITER $$
+
+CREATE TRIGGER `property_before_insert` BEFORE INSERT ON `property`
+FOR EACH ROW
+BEGIN
+  SET NEW.custom_pid = CONCAT('EKL', SUBSTRING(REPLACE(UUID(), '-', ''), 1, 8));
+END;
+$$
+
+DELIMITER ;
+
+-- Dumping data for table `property`
+INSERT INTO `property` (`title`, `pcontent`, `type`, `bhk`, `stype`, `bedroom`, `deposit`, `per`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `location`, `city`, `state`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `availabledate`, `date`)
+VALUES ('New Apartment', '<p>Sample content for the new apartment</p>', 'appartment', '2 BHK', 'rent', 2, '2000', 'Per Month', 1, 1, 1, 1, '2nd Floor', 1200, 1500000, 'Sample Location', 'Sample City', 'Sample State', 'Sample Features', 'image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 17, 'available', 'mapimage1.jpg', 'topmapimage1.jpg', 'groundmapimage1.jpg', 'totalfloor1', '2023-07-22 12:00:00', NOW()),
+('Another Apartment', '<p>Sample content for another apartment</p>', 'apartment', '3 BHK', 'rent', 3, '2000', 'Per Month', 1, 0, 1, 1, '3rd Floor', 1800, 2000000, 'Sample Location 2', 'Sample City 2', 'Sample State 2', 'Sample Features 2', 'image6.jpg', 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg', 18, 'available', 'mapimage2.jpg', 'topmapimage2.jpg', 'groundmapimage2.jpg', 'totalfloor2', '2023-07-23 14:00:00', NOW()),
+('Third Apartment', '<p>Sample content for the third apartment</p>', 'apartment', '1 BHK', 'rent', 1, '2000', 'Per Month', 1, 0, 1, 0, '1st Floor', 800, 1000000, 'Sample Location 3', 'Sample City 3', 'Sample State 3', 'Sample Features 3', 'image11.jpg', 'image12.jpg', 'image13.jpg', 'image14.jpg', 'image15.jpg', 19, 'available', 'mapimage3.jpg', 'topmapimage3.jpg', 'groundmapimage3.jpg', 'totalfloor3', '2023-07-24 10:30:00', NOW());
+=======
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -202,6 +247,7 @@ INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `bhk`, `stype`, `bed
 (22, 'Protea Glen Apartment', '<p>Magicbricks is an online platform where real estate trade is taking place in a much faster and newer manner. We not just help you with finding the ideal real estate, but also ensure that your buying journey is as smooth as it can be. We understand that while buying or renting a property, there are a lot of factors to be taken into consideration, like the locality, preferred area, budget, amenities, and a lot more. Magicbricks is the destination where you will end up finding the best suitable property available across India. Whether you are looking for a rented property or planning to build your dream abode, you can find anything and everything in real estate at our portal. We offer residential and commercial property listings for both sale and rent across the country. If you wish to make property investment in top cities, we present detailed information of various properties on sale, upcoming projects by renowned builders, budget residential apartments, commercial spaces, shops, etc. across cities like Bangalore, Pune, Mumbai, New Delhi, Chennai, Hyderabad, Kolkata, Noida, Gurgaon and many more. A wide variety of listing that is advertised here gives you an excellent overview of all property available in the area you are considering. Whether you are hunting for residential property, agricultural property, your next business set up, or an office space, Magicbricks aims at providing you the largest number of listing options in your preferred area to choose from.</p>', 'bunglow', '3 BHK', 'sale', 3, 2, 1, 1, 1, '2nd Floor', 1950, 4550467, 'main market near Amanzi Primary School', 'Protea Glen', 'Soweto', '<p>&nbsp;</p>\r\n<!---feature area start--->\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Property Age : </span>10 Years</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Swiming Pool : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Parking : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">GYM : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Type : </span>Appartment</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Security : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Dining Capacity : </span>10 People</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Temple : </span>Yes</li>\r\n</ul>\r\n</div>\r\n<div class=\"col-md-4\">\r\n<ul>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">3rd Party : </span>No</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Alivator : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">CCTV : </span>Yes</li>\r\n<li class=\"mb-3\"><span class=\"text-secondary font-weight-bold\">Water Supply : </span>Ground Water / Tank</li>\r\n</ul>\r\n</div>\r\n<!---feature area end---->\r\n<p>&nbsp;</p>', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', 16, 'sold out', 'floor1.png', 'basement1.jpg', 'ground1.jpg', '2 Floor', '2023-04-04 01:38:36');
 
 -- --------------------------------------------------------
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 --
 -- Table structure for table `state`
@@ -294,8 +340,11 @@ ALTER TABLE `feedback`
 --
 -- Indexes for table `property`
 --
+<<<<<<< HEAD
+=======
 ALTER TABLE `property`
   ADD PRIMARY KEY (`pid`);
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 --
 -- Indexes for table `state`

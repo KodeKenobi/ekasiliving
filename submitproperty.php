@@ -10,6 +10,81 @@ if(!isset($_SESSION['uemail']))
 
 //// code insert
 //// add code
+<<<<<<< HEAD
+$error = "";
+$msg = "";
+
+if (isset($_POST['add'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $ptype = $_POST['ptype'];
+    $bhk = $_POST['bhk'];
+    $bed = $_POST['bed'];
+    $balc = $_POST['balc'];
+    $hall = $_POST['hall'];
+    $stype = $_POST['stype'];
+    $bath = $_POST['bath'];
+    $kitc = $_POST['kitc'];
+    $floor = $_POST['floor'];
+    $price = $_POST['price'];
+    $deposit = $_POST['deposit'];
+    $per = $_POST['per'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $asize = $_POST['asize'];
+    $loc = $_POST['loc'];
+    $status = $_POST['status'];
+    $availabledate = $_POST['availabledate'];
+    $uid = $_SESSION['uid'];
+    $feature = "";
+
+    // Check if 'feature' array is set in $_POST and store the selected features in $selectedFeatures
+    if (isset($_POST['feature']) && is_array($_POST['feature'])) {
+        $selectedFeatures = $_POST['feature'];
+    } else {
+        $selectedFeatures = array(); // If no features were selected, initialize an empty array
+    }
+
+    // Implode the selected features into a comma-separated string
+    $feature = implode(', ', $selectedFeatures);
+
+    // Rest of your existing code for image handling...
+
+    $totalfloor = $_POST['totalfl'];
+
+    $aimage = $_FILES['aimage']['name'];
+    $aimage1 = $_FILES['aimage1']['name'];
+    $aimage2 = $_FILES['aimage2']['name'];
+    $aimage3 = $_FILES['aimage3']['name'];
+    $aimage4 = $_FILES['aimage4']['name'];
+
+    $temp_name = $_FILES['aimage']['tmp_name'];
+    $temp_name1 = $_FILES['aimage1']['tmp_name'];
+    $temp_name2 = $_FILES['aimage2']['tmp_name'];
+    $temp_name3 = $_FILES['aimage3']['tmp_name'];
+    $temp_name4 = $_FILES['aimage4']['tmp_name'];
+
+    // Move uploaded files to the desired location
+    $upload_path = "admin/property/";
+    move_uploaded_file($temp_name, $upload_path . $aimage);
+    move_uploaded_file($temp_name1, $upload_path . $aimage1);
+    move_uploaded_file($temp_name2, $upload_path . $aimage2);
+    move_uploaded_file($temp_name3, $upload_path . $aimage3);
+    move_uploaded_file($temp_name4, $upload_path . $aimage4);
+
+    // Rest of your existing code...
+
+    $sql = "INSERT INTO property (title, pcontent, type, bhk, stype, bedroom, deposit, per, bathroom, balcony, kitchen, hall, floor, size, price, location, city, state, feature, pimage, pimage1, pimage2, pimage3, pimage4, uid, status, availabledate, totalfloor)
+            VALUES ('$title', '$content', '$ptype', '$bhk', '$stype', '$bed', '$deposit', '$per', '$bath', '$balc', '$kitc', '$hall', '$floor', '$asize', '$price', '$loc', '$city', '$state', '$feature', '$aimage', '$aimage1', '$aimage2', '$aimage3', '$aimage4', '$uid', '$status', '$availabledate', '$totalfloor')";
+
+    $result = mysqli_query($con, $sql);
+    if ($result) {
+        $msg = "<p class='alert alert-success'>Property Inserted Successfully</p>";
+    } else {
+        $error = "<p class='alert alert-warning'>Property Not Inserted Some Error</p>";
+    }
+}
+=======
 $error="";
 $msg="";
 if(isset($_POST['add']))
@@ -104,10 +179,15 @@ if(isset($_POST['add']))
 			$error="<p class='alert alert-warning'>Property Not Inserted Some Error</p>";
 		}
 }							
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 ?>
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,12 +293,22 @@ if(isset($_POST['add']))
                                             <div class="col-lg-9">
                                                 <select class="form-control" name="ptype" required>
                                                     <option value="" selected disabled>Select Property Type</option>
+<<<<<<< HEAD
+                                                    <option value="Apartment">Apartment</option>
+                                                    <option value="Room">Room</option>
+                                                    <option value="Back Room Normal">Back Room (Normal)</option>
+                                                    <option value="Back Room Garage">Back Room (Garage)</option>
+                                                    <option value="Flat">Flat</option>
+                                                    <option value="House">House</option>
+                                                    <option value="Bachelor">Bachelor</option>
+=======
                                                     <option value="room">Room</option>
                                                     <option value="back_room">Back Room</option>
                                                     <option value="apartment">Apartment</option>
                                                     <option value="flat">Flat</option>
                                                     <option value="house">House</option>
                                                     <option value="cottage">Cottage</option>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </select>
                                             </div>
                                         </div>
@@ -230,8 +320,13 @@ if(isset($_POST['add']))
                                             <div class="col-lg-9">
                                                 <select class="form-control" name="stype" required>
                                                     <option value="" selected disabled>Select Selling Type</option>
+<<<<<<< HEAD
+                                                    <option value="Rent">Rent</option>
+                                                    <option value="Sale">Sale</option>
+=======
                                                     <option value="rent">Rent</option>
                                                     <option value="sale">Sale</option>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </select>
                                             </div>
                                         </div>
@@ -254,6 +349,10 @@ if(isset($_POST['add']))
                                                 <!-- <select class="form-control" required name="stype" name="bath"> -->
                                                 <select class="form-control" name="bed">
                                                     <option value="" name="">Select Bedroom</option>
+<<<<<<< HEAD
+                                                    <option value="0" name="bed" required>Open Space</option>
+=======
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     <option value="1" name="bed" required>1</option>
                                                     <option value="2" name="bed" required>2</option>
                                                     <option value="3" name="bed" required>3</option>
@@ -322,6 +421,20 @@ if(isset($_POST['add']))
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Province</label>
                                             <div class="col-lg-9">
+<<<<<<< HEAD
+                                                <select class="form-control" name="state" required
+                                                    onchange="populateCities(this)">
+                                                    <option value="">Select Province</option>
+                                                    <option value="Eastern Cape" name="state">Eastern Cape</option>
+                                                    <option value="Free State" name="state">Free State</option>
+                                                    <option value="Gauteng" name="state">Gauteng</option>
+                                                    <option value="KwaZulu-Natal" name="state">KwaZulu-Natal</option>
+                                                    <option value="Limpopo" name="state">Limpopo</option>
+                                                    <option value="Mpumalanga" name="state">Mpumalanga</option>
+                                                    <option value="North West" name="state">North West</option>
+                                                    <option value="Northern Cape" name="state">Northern Cape</option>
+                                                    <option value="Western Cape" name="state">Western Cape</option>
+=======
                                                 <select class="form-control" name="province" required
                                                     onchange="populateCities(this)">
                                                     <option value="">Select Province</option>
@@ -334,6 +447,7 @@ if(isset($_POST['add']))
                                                     <option value="North West" name="province">North West</option>
                                                     <option value="Northern Cape" name="province">Northern Cape</option>
                                                     <option value="Western Cape" name="province">Western Cape</option>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </select>
                                             </div>
                                         </div>
@@ -520,6 +634,13 @@ if(isset($_POST['add']))
         <div class="col-md-3">
           <h6>Features & Fittings</h6>
           <div class="form-check">
+<<<<<<< HEAD
+            <input class="form-check-input" type="checkbox" id="kitchen-checkbox" name="feature[]" value="Kitchen">
+            <label class="form-check-label" for="kitchen-checkbox">Kitchen</label>
+          </div>
+          <div class="form-check">
+=======
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
             <input class="form-check-input" type="checkbox" id="aircon-checkbox" name="feature[]" value="Aircon">
             <label class="form-check-label" for="aircon-checkbox">Aircon</label>
           </div>
@@ -579,7 +700,11 @@ if(isset($_POST['add']))
         </div>
 
         <div class="col-md-3">
+<<<<<<< HEAD
+          <h6>Nearby Facilities</h6>
+=======
           <h6>Nearby</h6>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gym-checkbox" name="feature[]" value="Gym">
             <label class="form-check-label" for="gym-checkbox">Gym</label>
@@ -632,6 +757,21 @@ if(isset($_POST['add']))
             <input class="form-check-input" type="checkbox" id="library-checkbox" name="feature[]" value="Fridge">
             <label class="form-check-label" for="library-checkbox">Library</label>
           </div>
+<<<<<<< HEAD
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="taxirank-checkbox" name="feature[]" value="Taxi Rank">
+            <label class="form-check-label" for="taxirank-checkbox">Taxi Rank</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="trainstation-checkbox" name="feature[]" value="Train Station">
+            <label class="form-check-label" for="trainstation-checkbox">Library</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="busstop-checkbox" name="feature[]" value="Bus Stop (Rea Vaya)">
+            <label class="form-check-label" for="busstop-checkbox">Bus Stop (Rea Vaya)</label>
+          </div>
+=======
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
           <!-- Add more additional-related checkboxes here -->
         </div>
       </div>
@@ -724,7 +864,11 @@ if(isset($_POST['add']))
                                             <label class="col-lg-2 col-form-label">Description</label>
                                             <div class="col-lg-9">
                                                 <textarea class="tinymce form-control" name="content" rows="10"
+<<<<<<< HEAD
+                                                    cols="30" contenteditable></textarea>
+=======
                                                     cols="30"></textarea>
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             </div>
                                         </div>
 
