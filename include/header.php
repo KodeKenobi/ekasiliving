@@ -1,4 +1,5 @@
 <?php 
+<<<<<<< HEAD
 ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
@@ -15,6 +16,12 @@ if (isset($_SESSION['uemail'])) {
         $uniqueIdentifier = $row['unique_identifier'];
     }
 }
+=======
+ini_set('session.cache_limiter','public');
+session_cache_limiter(false);
+session_start();
+include("config.php");							
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 ?>
 
 <html lang="en" dir="ltr">
@@ -29,6 +36,7 @@ if (isset($_SESSION['uemail'])) {
 </head>
 
 <style>
+<<<<<<< HEAD
   @media (max-width: 991px) {
     .nav.item {
       margin-left: 17px !important;
@@ -55,6 +63,22 @@ if (isset($_SESSION['uemail'])) {
   }
   }
   
+=======
+  @media (max-width: 767px) {
+    .nav.item {
+      margin-left: 17px;
+      margin-top: -32px;
+    }
+    .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-brand img {
+    margin-right: 208px !important; /* Optional: Add some spacing between the logo and text */
+  }
+  }
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 
 </style>
@@ -118,7 +142,11 @@ if (isset($_SESSION['uemail'])) {
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light p-0"> <a class="navbar-brand position-relative"
                             href="index.php"><img class="nav-logo animate__animated animate__slideInDown"
+<<<<<<< HEAD
                                 src="img_new/logo.png" alt="" style="height: 142px;"></a><b
+=======
+                                src="img_new/logo.png" alt="" style="height: 55px;"></a><b
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             class="animate__animated animate__slideInDown link-dark"
                             style="color:black; font-size:large;"><span><a href="" style="color:black;"></a></span></b>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -168,6 +196,7 @@ if (isset($_SESSION['uemail'])) {
 
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <?php  
+<<<<<<< HEAD
                             if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
                             ?>
                                 <?php if(isset($_SESSION['uname'])) { ?>
@@ -186,6 +215,18 @@ if (isset($_SESSION['uemail'])) {
 
 
 
+=======
+                                if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
+                            ?>
+                            <?php if(isset($_SESSION['uname'])) { ?>
+                            <i class="nav item"><?php echo $_SESSION['uname']; ?></i>
+                            <?php } ?>
+                            <?php 
+                                } 
+                            ?>
+
+
+>>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             <!-- <?php if(isset($_SESSION['uemail'])) { ?>
                             <li><a href="#"><i
                                         class="fas fa-envelope text-primary mr-1"></i><?php echo $_SESSION['uemail']; ?></a>
