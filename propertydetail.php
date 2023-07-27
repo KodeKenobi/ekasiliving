@@ -3,7 +3,6 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-<<<<<<< HEAD
 $error = "";
 $msg = "";
 if (isset($_POST['send'])) {
@@ -26,34 +25,10 @@ if (isset($_POST['send'])) {
     }
 }
 
-=======
-$error="";
-$msg="";
-if(isset($_POST['send']))
-{
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$phone=$_POST['phone'];
-	$message=$_POST['message'];
-	
-	if(!empty($name) && !empty($email) && !empty($phone) &&  !empty($message))
-	{
-		
-		$sql="INSERT INTO contact (name,email,phone,message) VALUES ('$name','$email','$phone','$message')";
-		   $result=mysqli_query($con, $sql);
-		   if($result){
-			   $msg = "<p class='alert alert-success'>Message Send Successfully</p> ";
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Message Not Send Successfully</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-	}
-}
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 								
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,33 +70,9 @@ if(isset($_POST['send']))
     <title>Exclusive Kasi Living - Property Detail</title>
 </head>
 
-<!-- Chat Bot Code -->
-<!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
-  <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
-  <script>
-      WAWidget.init({
-          el: document.querySelector("#assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"),
-          endpoint: "https://assistant.workativ.com/widget",
-          widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
-          openByDefault: false
-      });
-  </script> -->
-<!-- Chat Bot Code End -->
 
 <body>
 
-    <!--	Page Loader
-=============================================================
-<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>
--->
-
-<<<<<<< HEAD
     <style>
     @media (min-width: 768px) {
         .hide-on-desktop {
@@ -129,15 +80,6 @@ if(isset($_POST['send']))
         }
     }
     </style>
-=======
-<style>
-  @media (min-width: 768px) {
-    .hide-on-desktop {
-      display: none;
-    }
-  }
-</style>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
     <div id="page-wrapper">
         <div class="row">
@@ -185,75 +127,43 @@ if(isset($_POST['send']))
                                     <div id="single-property"
                                         style="width:1200px; height:700px; margin:30px auto 50px;">
                                         <!-- Slide 1-->
-                                        <div class="ls-slide" data-ls="duration:7500;">
+                                        <!-- <div class="ls-slide" data-ls="duration:7500;">
                                             <img width="1920" height="1080"
-<<<<<<< HEAD
                                                 src="admin/property/<?php echo $row['21'];?>" class="ls-bg" alt="" />
-=======
-                                                src="admin/property/<?php echo $row['20'];?>" class="ls-bg" alt="" />
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
+                                        </div> -->
+
+                                        <div class="ls-slide" data-ls="duration:7500;">
+                                            <img width="auto" height="auto"
+                                                src="admin/property/<?php echo $row['21'];?>" class="ls-bg" alt="" />
                                         </div>
 
                                         <!-- Slide 2-->
                                         <div class="ls-slide" data-ls="duration:7500;">
-                                            <img width="1920" height="1080"
-<<<<<<< HEAD
+                                        <img width="auto" height="auto"
                                                 src="admin/property/<?php echo $row['22'];?>" class="ls-bg" alt="" />
-=======
-                                                src="admin/property/<?php echo $row['21'];?>" class="ls-bg" alt="" />
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
 
                                         <!-- Slide 3-->
                                         <div class="ls-slide" data-ls="duration:7500;">
-                                            <img width="1920" height="1080"
-<<<<<<< HEAD
+                                        <img width="auto" height="auto"
                                                 src="admin/property/<?php echo $row['23'];?>" class="ls-bg" alt="" />
-=======
-                                                src="admin/property/<?php echo $row['22'];?>" class="ls-bg" alt="" />
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
 
                                         <!-- Slide 4-->
                                         <div class="ls-slide" data-ls="duration:7500;">
-                                            <img width="1920" height="1080"
-<<<<<<< HEAD
+                                        <img width="auto" height="auto"
                                                 src="admin/property/<?php echo $row['24'];?>" class="ls-bg" alt="" />
-=======
-                                                src="admin/property/<?php echo $row['23'];?>" class="ls-bg" alt="" />
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
 
                                         <!-- Slide 5-->
                                         <div class="ls-slide" data-ls="duration:7500;">
-                                            <img width="1920" height="1080"
-<<<<<<< HEAD
+                                        <img width="auto" height="auto"
                                                 src="admin/property/<?php echo $row['25'];?>" class="ls-bg" alt="" />
-=======
-                                                src="admin/property/<?php echo $row['24'];?>" class="ls-bg" alt="" />
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- <div class="row mb-4">
-                            <div class="col-md-6">
-                                <div class="bg-primary d-table px-3 py-2 rounded text-white text-capitalize">For <?php echo $row['3'];?></div>
-                                <h5 class="mt-2 text-secondary text-capitalize"><?php echo $row['1'];?></h5>
-                                <span class="mb-sm-20 d-block text-capitalize">Location<i></i> &nbsp;<?php echo $row['17'];?></span>
-                                <span class="mb-sm-20 d-block text-capitalize">Rent<i></i> &nbsp;<?php echo $row['13'];?></span>
-                                <span class="mb-sm-20 d-block text-capitalize">Per<i></i> &nbsp;<?php echo $row['15'];?></span>
-                                <span class="mb-sm-20 d-block text-capitalize">Deposit<i></i> &nbsp;<?php echo $row['14'];?></span>
-							</div>
-                            <div class="col-md-6">
-                                <div class="text-primary text-left h5 my-2 text-md-right">$<?php echo $row['13'];?></div>
-                                <div class="text-left text-md-right">Price</div>
-                            </div>
-                        </div> -->
-
-
-<<<<<<< HEAD
                             <h5 class="mt-2 text-secondary text-capitalize"><?php echo $row['2'];?></h5>
                             <span class="mb-sm-20 d-block text-capitalize"><i
                                     class="fas fa-map-marker-alt text-primary font-12"></i>
@@ -265,57 +175,34 @@ if(isset($_POST['send']))
                                 &nbsp;WhatsApp User
                             </a> -->
 
-                            <a href="https://api.whatsapp.com/send/?phone=<?php echo $_SESSION['uphone']; ?>&text=Hello%20<?php echo $row['uname']; ?>,%20I%20am%20interested%20in%20the%20property%20listing%20(<?php echo $row['2']; ?>)%20you%20posted.%20Can%20you%20provide%20more%20information?"
+                            <a href="https://api.whatsapp.com/send/?phone=27<?php echo $row['uphone'];?>&text=Hello%20<?php echo $row['uname']; ?>,%20I%20am%20interested%20in%20the%20property%20listing%20(<?php echo $row['2']; ?>)%20you%20posted on Exclusive Kasi Living.%20Can%20you%20provide%20more%20information?"
                                 class="btn btn-primary">
                                 <i class="fab fa-whatsapp"></i> Send WhatsApp
                             </a>
 
-=======
-                            <h5 class="mt-2 text-secondary text-capitalize"><?php echo $row['1'];?></h5>
-                            <span class="mb-sm-20 d-block text-capitalize"><i
-                                    class="fas fa-map-marker-alt text-primary font-12"></i>
-                                &nbsp;<?php echo $row['17'] . ', ' . $row['18'] . ', ' . $row['16']; ?></span>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             <div class="mt-3 table-striped font-14 pb-2">
                                 <table class="w-100">
                                     <tbody>
                                         <tr>
                                             <td>Rent:</td>
-<<<<<<< HEAD
                                             <td class="text-capitalize">R<?php echo $row['16'];?></td>
-=======
-                                            <td class="text-capitalize">R<?php echo $row['13'];?></td>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <td>Location:</td>
                                             <td class="text-capitalize"><?php echo $row['17'] . ', ' . $row['18']; ?>
                                             </td>
                                         </tr>
                                         <tr>
-<<<<<<< HEAD
-                                            <td>Rent:</td>
-                                            <td class="text-capitalize"><?php echo $row['9'];?></td>
-=======
                                             <td>Rent Per:</td>
-                                            <td class="text-capitalize"><?php echo $row['15'];?></td>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
+                                            <td class="text-capitalize"><?php echo $row['9'];?></td>
                                             <td>Posted By:</td>
                                             <td class="text-capitalize"><?php echo $row['uname'];?></td>
                                         </tr>
                                         <tr>
                                             <td>Deposit Is:</td>
-<<<<<<< HEAD
                                             <td class="text-capitalize">R<?php echo $row['8'];?></td>
                                             <td>Date Posted:</td>
                                             <!-- <td class="text-capitalize"><?php echo $row['33'];?></td> -->
                                             <td class="text-capitalize">
                                                 <?php $date = date("Y-m-d", strtotime($row['33'])); echo $date;?></td>
-=======
-                                            <td class="text-capitalize">R<?php echo $row['14'];?></td>
-                                            <td>Date Posted:</td>
-                                            <!-- <td class="text-capitalize"><?php echo $row['31'];?></td> -->
-                                            <td class="text-capitalize">
-                                                <?php $date = date("Y-m-d", strtotime($row['31'])); echo $date;?></td>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </tr>
 
                                     </tbody>
@@ -326,32 +213,21 @@ if(isset($_POST['send']))
                             <div class="property-details">
                                 <div class="bg-gray property-quantity px-4 pt-4 w-100">
                                     <ul>
-<<<<<<< HEAD
-                                        <li><span class="text-secondary"><?php echo $row['15'];?></span>Meters</li>
+                                        <li><span class="text-secondary"><?php echo $row['15'];?></span>Square Meters</li>
                                         <li><span class="text-secondary"><?php echo $row['7'];?></span>Room(s)</li>
                                         <!-- <li><span class="text-secondary">R<?php echo $row['13'];?></span> Rent <?php echo $row['15'];?></li> -->
                                         <li><span class="text-secondary">R<?php echo $row['16'];?></span>Rent</li>
                                         <li><span class="text-secondary">R<?php echo $row['8'];?></span>Deposit</li>
                                         <!-- <li><span class="text-secondary"><?php echo $row['9'];?></span>Per</li> -->
                                         <li><span class="text-secondary"><?php echo $row['1'];?></span>Reference ID</li>
-=======
-                                        <li><span class="text-secondary"><?php echo $row['12'];?></span>Meters</li>
-                                        <li><span class="text-secondary"><?php echo $row['6'];?></span>Room(s)</li>
-                                        <!-- <li><span class="text-secondary">R<?php echo $row['13'];?></span> Rent <?php echo $row['15'];?></li> -->
-                                        <li><span class="text-secondary">R<?php echo $row['13'];?></span>Rent</li>
-                                        <li><span class="text-secondary">R<?php echo $row['14'];?></span>Deposit</li>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
+                                        <li><span class="text-secondary"><?php echo $row['uphone'];?></span>Contact Number</li>
                                         <!-- <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
                                         <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
                                         <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li> -->
                                     </ul>
                                 </div>
                                 <h4 class="text-secondary my-4">Description</h4>
-<<<<<<< HEAD
                                 <p><?php echo $row['3'];?></p>
-=======
-                                <p><?php echo $row['2'];?></p>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                 <h5 class="mt-5 mb-4 text-secondary">Property Summary</h5>
                                 <div class="table-striped font-14 pb-2">
@@ -359,7 +235,6 @@ if(isset($_POST['send']))
                                         <tbody>
                                             <tr>
                                                 <td>Property Type:</td>
-<<<<<<< HEAD
                                                 <td class="text-capitalize"><?php echo $row['4'];?></td>
                                                 <td>Listing Type:</td>
                                                 <td class="text-capitalize"><?php echo $row['6'];?></td>
@@ -367,29 +242,14 @@ if(isset($_POST['send']))
                                             <tr>
                                                 <td>Status:</td>
                                                 <td class="text-capitalize"><?php echo $row['27'];?></td>
-=======
-                                                <td class="text-capitalize"><?php echo $row['3'];?></td>
-                                                <td>Listing Type:</td>
-                                                <td class="text-capitalize"><?php echo $row['5'];?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Status:</td>
-                                                <td class="text-capitalize"><?php echo $row['26'];?></td>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 <td>Move In:</td>
                                                 <td class="text-capitalize"><?php echo $row['32'];?></td>
                                             </tr>
                                             <tr>
                                                 <td>City:</td>
-<<<<<<< HEAD
                                                 <td class="text-capitalize"><?php echo $row['18'];?></td>
                                                 <td>Province Is:</td>
                                                 <td class="text-capitalize"><?php echo $row['19'];?></td>
-=======
-                                                <td class="text-capitalize"><?php echo $row['17'];?></td>
-                                                <td>Province Is:</td>
-                                                <td class="text-capitalize"><?php echo $row['18'];?></td>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             </tr>
 
                                         </tbody>
@@ -397,7 +257,68 @@ if(isset($_POST['send']))
                                 </div>
 
 
-
+                            <!-- <h5 class="mt-5 mb-4 text-secondary double-down-line-left position-relative">Contact Agent</h5>
+                            <div class="agent-contact pt-60">
+                                <div class="row">
+                                    <div class="col-sm-4 col-lg-3"> <img src="admin/user/<?php echo $row['uimage']; ?>" alt="" height="200" width="170"> </div>
+                                    <div class="col-sm-8 col-lg-9">
+                                        <div class="agent-data text-ordinary mt-sm-20">
+                                            <h6 class="text-primary text-capitalize"><?php echo $row['uname'];?></h6>
+                                            <ul class="mb-3">
+                                                <li><?php echo $row['uphone'];?></li>
+                                                <li><?php echo $row['uemail'];?></li>
+                                            </ul>
+                                            
+                                            <div class="mt-3 text-secondary hover-text-primary">
+                                                <ul>
+                                                    <li class="float-left mr-3"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                    <li class="float-left mr-3"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                    <li class="float-left mr-3"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                    <li class="float-left mr-3"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                                    <li class="float-left mr-3"><a href="#"><i class="fas fa-rss"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12">
+                                        <form class="bg-gray-form mt-5" action="#" method="post">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <input class="form-control bg-gray" id="name" name="firstname" placeholder="Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <input class="form-control bg-gray" id="email" name="email" placeholder="Email" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <input class="form-control bg-gray" id="phone" name="phone" placeholder="Phone" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit" id="send" value="submit" class="btn btn-primary">Send Message</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control bg-gray mt-sm-20" id="massage" name="massage" cols="30" rows="7" placeholder="Massage"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div> -->
 
 
                                 <h5 class="mt-5 mb-4 text-secondary">Features</h5>
@@ -446,11 +367,7 @@ if(isset($_POST['send']))
                                                     <!-- No change to the third column -->
                                                     <h6>Features & Fittings</h6>
                                                     <?php
-<<<<<<< HEAD
                                                     $featuresFittingsFeatures = ['Kitchen', 'Aircon', 'Heating', 'Balcony', 'Built-in Braai', 'Built-in Cupboards', 'WiFi', 'Furnished', 'Garden', 'Outside Sink', 'Satellite', 'Dishwasher', 'Microwave', 'Oven', 'Fridge'];
-=======
-                                                    $featuresFittingsFeatures = ['Aircon', 'Heating', 'Balcony', 'Built-in Braai', 'Built-in Cupboards', 'WiFi', 'Furnished', 'Garden', 'Outside Sink', 'Satellite', 'Dishwasher', 'Microwave', 'Oven', 'Fridge'];
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     $featuresFittingsSelected = array_intersect($featuresFittingsFeatures, $features);
                                                     if (!empty($featuresFittingsSelected)) {
                                                         echo '<ul>';
@@ -463,21 +380,12 @@ if(isset($_POST['send']))
                                                     }
                                                     ?>
                                                 </div>
-<<<<<<< HEAD
 
                                                 <div class="col-md-3 mb-4 mb-md-0">
                                                     <!-- No change to the third column -->
                                                     <h6>Nearby Facilities</h6>
                                                     <?php
                                                     $recreationalFeatures = ['Swimming Pool', 'Tennis Court', 'Playground', 'Golf Course', 'Pet Park', 'Recreational Park', 'Mall', 'Shopping Center', 'Spazas', 'Schools', 'Police Station', 'Library', 'Bus Stop (Rea Vaya)', 'Taxi Rank', 'Train Station'];
-=======
-                                            
-                                                <div class="col-md-3 mb-4 mb-md-0">
-                                                    <!-- No change to the third column -->
-                                                    <h6>Nearby</h6>
-                                                    <?php
-                                                    $recreationalFeatures = ['Swimming Pool', 'Tennis Court', 'Playground', 'Golf Course', 'Pet Park', 'Recreational Park', 'Mall', 'Shopping Center', 'Spazas', 'Schools', 'Police Station', 'Library'];
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     $recreationalSelected = array_intersect($recreationalFeatures, $features);
                                                     if (!empty($recreationalSelected)) {
                                                         echo '<ul>';
@@ -490,11 +398,7 @@ if(isset($_POST['send']))
                                                     }
                                                     ?>
                                                 </div>
-<<<<<<< HEAD
 
-=======
-                                            
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             </div>
                                         </div>
                                     </div>
@@ -613,7 +517,7 @@ if(isset($_POST['send']))
                         <?php } ?>
 
                         <div class="col-lg-4">
-                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4 mt-md-50">Send
+                            <!-- <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4 mt-md-50">Send
                                 Message</h4>
                             <form method="post" action="#">
                                 <div class="row">
@@ -644,11 +548,7 @@ if(isset($_POST['send']))
                                                             placeholder="Subject">
                                                     </div>
                                                     <div class="col-lg-12">
-<<<<<<< HEAD
                                                         <div class="form-group input-group mb-2 mr-sm-2">
-=======
-                                                        <div class="form-group input-group mb-2 mr-sm-2 ">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                             <textarea name="message" class="form-control" rows="5"
                                                                 placeholder="Type Comments..."></textarea>
                                                         </div>
@@ -660,44 +560,13 @@ if(isset($_POST['send']))
                                         </form>
                                     </div>
                                 </div>
-                            </form>
-<<<<<<< HEAD
+                            </form> -->
 
 
                             <div class="sidebar-widget mt-5">
                                 <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search
                                     Property</h4>
                                 <ul class="property_list_widget">
-=======
-                            <div class="sidebar-widget mt-5">
-                                <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent
-                                    Property Add</h4>
-                                <ul class="property_list_widget">
-
-                                    <?php 
-								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
-										while($row=mysqli_fetch_array($query))
-										{
-								?>
-                                    <li> <img src="admin/property/<?php echo $row['21'];?>" alt="pimage"
-                                            style="width: 80px; height: 53.33px; object-fit: cover;">
-                                        <h6 class="text-secondary hover-text-primary text-capitalize"><a
-                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
-                                        </h6>
-                                        <span class="font-14"><i
-                                                class="fas fa-map-marker-alt icon-primary icon-small"></i>
-                                            <?php echo $row['17'] . ', ' . $row['18']; ?></span>
-
-                                    </li>
-                                    <?php } ?>
-
-                                </ul>
-                            </div>
-
-                            <div class="sidebar-widget mt-5">
-                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search Property</h4>
-                            <ul class="property_list_widget">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 
                                     <form method="post" action="propertygrid.php">
@@ -717,7 +586,6 @@ if(isset($_POST['send']))
                                             <label for="type">Type:</label>
                                             <select class="form-control" name="type">
                                                 <option name="type" id="type" value="">Select Type</option>
-<<<<<<< HEAD
                                                 <option value="Apartment">Apartment</option>
                                                 <option value="Room">Room</option>
                                                 <option value="Back Room Normal">Back Room (Normal)</option>
@@ -725,14 +593,6 @@ if(isset($_POST['send']))
                                                 <option value="Flat">Flat</option>
                                                 <option value="House">House</option>
                                                 <option value="Bachelor">Bachelor</option>
-=======
-                                                <option name="type" id="type" value="Room">Room</option>
-                                                <option name="type" id="type" value="Back Room">Back Room</option>
-                                                <option name="type" id="type" value="Apartment">Apartment</option>
-                                                <option name="type" id="type" value="Flat">Flat</option>
-                                                <option name="type" id="type" value="House">House</option>
-                                                <option name="type" id="type" value="Cottage">Cottage</option>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                             </select>
                                         </div>
@@ -744,11 +604,7 @@ if(isset($_POST['send']))
 
 
                                     <form method="post" action="propertygrid.php">
-<<<<<<< HEAD
                                         <div class="form-group">
-=======
-                                    <div class="form-group">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <label for="stype">For Rent or Sale:</label>
                                             <input type="text" name="stype" id="stype" class="form-control"
                                                 placeholder="Rent or Sale">
@@ -760,13 +616,8 @@ if(isset($_POST['send']))
                                     </form>
 
 
-<<<<<<< HEAD
 
                                     <!-- <?php 
-=======
-							
-								<!-- <?php 
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
@@ -778,7 +629,6 @@ if(isset($_POST['send']))
                                 </li>
                                 <?php } ?> -->
 
-<<<<<<< HEAD
                                 </ul>
                             </div>
 
@@ -795,7 +645,7 @@ if(isset($_POST['send']))
                                     <li> <img src="admin/property/<?php echo $row['21'];?>" alt="pimage"
                                             style="width: 80px; height: 53.33px; object-fit: cover;">
                                         <h6 class="text-secondary hover-text-primary text-capitalize"><a
-                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a>
+                                                href="propertydetail.php?pid=<?php echo $row[''];?>"><?php echo $row['2'];?></a>
                                         </h6>
                                         <span class="font-14"><i
                                                 class="fas fa-map-marker-alt icon-primary icon-small"></i>
@@ -806,13 +656,10 @@ if(isset($_POST['send']))
 
                                 </ul>
                             </div>
-=======
-                            </ul>
-                        </div>
-
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                         </div>
+
+                        
                     </div>
                 </div>
             </div>

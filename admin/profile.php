@@ -14,10 +14,10 @@ if(!isset($_SESSION['auser']))
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>LM HOMES | Profile</title>
+        <title>EKL Admin | Profile</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/ekl.SVG">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -126,13 +126,10 @@ if(!isset($_SESSION['auser']))
 														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
 														<p class="col-sm-9"><?php echo $row['5']; ?></p>
 													</div>
-													<div class="row">
+													<!-- <div class="row">
 														<p class="col-sm-3 text-muted text-sm-right mb-0">Address</p>
-														<p class="col-sm-9 mb-0">4663  Agriculture Lane,<br>
-														Miami,<br>
-														Gujarat - 33165,<br>
-														India.</p>
-													</div>
+														<p class="col-sm-9 mb-0"><?php echo $row['6']; ?></p>
+													</div> -->
 												</div>
 											</div>
 										</div>
