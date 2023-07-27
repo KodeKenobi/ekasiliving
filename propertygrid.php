@@ -142,32 +142,19 @@ include("config.php");
                                 <div class="col-md-6">
                                     <div class="featured-thumb hover-zoomer mb-4">
                                         <div class="overlay-black overflow-hidden position-relative">
-<<<<<<< HEAD
                                             <img src="admin/property/<?php echo $row['21']; ?>" alt="pimage">
                                             <div class="sale bg-secondary text-white">For <?php echo $row['6']; ?></div>
-=======
-                                            <img src="admin/property/<?php echo $row['20']; ?>" alt="pimage">
-                                            <div class="sale bg-secondary text-white">For <?php echo $row['5']; ?></div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         </div>
                                         <div class="featured-thumb-data shadow-one">
                                             <div class="p-4">
                                                 <h5 class="text-secondary hover-text-primary mb-2 text-capitalize">
                                                     <a href="propertydetail.php?pid=<?php echo $row['0']; ?>">
-<<<<<<< HEAD
                                                         <?php echo $row['2']; ?>
-=======
-                                                        <?php echo $row['1']; ?>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                     </a>
                                                 </h5>
                                                 <span class="location text-capitalize">
                                                     <i class="fas fa-map-marker-alt text-primary"></i>
-<<<<<<< HEAD
                                                     <?php echo $row['18'] . ', ' . $row['19']; ?>
-=======
-                                                    <?php echo $row['17'] . ', ' . $row['18']; ?>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </span>
                                             </div>
                                         </div>
@@ -230,42 +217,11 @@ include("config.php");
                         </form>
                         </div> -->
 
-<<<<<<< HEAD
                         <div class="sidebar-widget mt-5">
                                 <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search
                                     Property</h4>
                                 <ul class="property_list_widget">
 
-=======
-                            <div class="sidebar-widget mt-5">
-                                <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent
-                                    Property Add</h4>
-                                <ul class="property_list_widget">
-
-                                    <?php 
-								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
-										while($row=mysqli_fetch_array($query))
-										{
-								?>
-                                    <li> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage">
-                                        <h6 class="text-secondary hover-text-primary text-capitalize"><a
-                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
-                                        </h6>
-                                        <span class="font-14"><i
-                                                class="fas fa-map-marker-alt icon-primary icon-small"></i>
-                                            <?php echo $row['17'] . ', ' . $row['18']; ?></span>
-
-                                    </li>
-                                    <?php } ?>
-
-                                </ul>
-                            </div>
-
-                            <div class="sidebar-widget mt-5">
-                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search Property</h4>
-                            <ul class="property_list_widget">
-
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                     <form method="post" action="propertygrid.php">
                                         <div class="form-group">
@@ -284,7 +240,6 @@ include("config.php");
                                             <label for="type">Type:</label>
                                             <select class="form-control" name="type">
                                                 <option name="type" id="type" value="">Select Type</option>
-<<<<<<< HEAD
                                                 <option value="Apartment">Apartment</option>
                                                 <option value="Room">Room</option>
                                                 <option value="Back Room Normal">Back Room (Normal)</option>
@@ -292,14 +247,6 @@ include("config.php");
                                                 <option value="Flat">Flat</option>
                                                 <option value="House">House</option>
                                                 <option value="Bachelor">Bachelor</option>
-=======
-                                                <option name="type" id="type" value="Room">Room</option>
-                                                <option name="type" id="type" value="Back Room">Back Room</option>
-                                                <option name="type" id="type" value="Apartment">Apartment</option>
-                                                <option name="type" id="type" value="Flat">Flat</option>
-                                                <option name="type" id="type" value="House">House</option>
-                                                <option name="type" id="type" value="Cottage">Cottage</option>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                             </select>
                                         </div>
@@ -311,11 +258,7 @@ include("config.php");
 
 
                                     <form method="post" action="propertygrid.php">
-<<<<<<< HEAD
                                         <div class="form-group">
-=======
-                                    <div class="form-group">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <!-- <label for="stype">For Rent or Sale:</label> -->
                                             <label for="stype">For Rent</label>
                                             <input type="text" name="stype" id="stype" class="form-control"
@@ -328,30 +271,19 @@ include("config.php");
                                     </form>
 
 
-<<<<<<< HEAD
 
                                     <!-- <?php 
-=======
-							
-								<!-- <?php 
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>
-<<<<<<< HEAD
                                 <li> <img src="admin/property/<?php echo $row['21'];?>" alt="pimage">
                                     <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a></h6>
-=======
-                                <li> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage">
-                                    <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                     <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span>
                                     
                                 </li>
                                 <?php } ?> -->
 
-<<<<<<< HEAD
                                 </ul>
                             </div>
 
@@ -378,10 +310,6 @@ include("config.php");
 
                                 </ul>
                             </div>
-=======
-                            </ul>
-                        </div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                         </div>
 

@@ -9,14 +9,14 @@ if(!isset($_SESSION['auser']))
 }
 ?>  
   <div class="header">
-			
+			<!-- images/logo/ekl.SVG" alt="" style="height: 70px !important;" -->
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="dashboard.php" class="logo">
-						<img src="assets/img/logo.png" alt="Logo">
+						<img src="assets/img/ekl.SVG" alt="Logo">
 					</a>
 					<a href="dashboard.php" class="logo logo-small">
-						<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+						<img src="assets/img/ekl.SVG" alt="Logo" width="30" height="30">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -101,10 +101,10 @@ if(!isset($_SESSION['auser']))
 							<li class="submenu">
 								<a href="#"><i class="fe fe-user"></i> <span> Users </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="adminlist.php"> Admin </a></li>
-									<li><a href="userlist.php"> Users </a></li>
-									<li><a href="useragent.php"> Agent </a></li>
-									<li><a href="userbuilder.php"> Builder </a></li>
+									<li><a href="adminlist.php"> Admins </a></li>
+									<!-- <li><a href="userlist.php"> Agents </a></li> -->
+									<li><a href="useragent.php"> Landlords </a></li>
+									<!-- <li><a href="userbuilder.php"> Builder </a></li> -->
 								</ul>
 							</li>
 						
@@ -114,7 +114,7 @@ if(!isset($_SESSION['auser']))
 							<li class="submenu">
 								<a href="#"><i class="fe fe-user"></i> <span> Property</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="propertyadd.php"> Add Property</a></li>
+									<!-- <li><a href="propertyadd.php"> Add Property</a></li> -->
 									<li><a href="propertyview.php"> View Property </a></li>
 									
 								</ul>

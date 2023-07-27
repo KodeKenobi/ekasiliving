@@ -105,10 +105,10 @@
                                             <div class="footer-widget">
                                                 <h4 class="widget-title text-white double-down-line-left position-relative">Contact Us</h4>
                                                 <ul class="text-white">
-                                                    <li class="hover-text-secondary"><i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1 hover-text-secondary"></i>Samgxika Plaza Office No 03, Laxmi Chowk,Near Confert Hotel, Fourways, Johannesburg, Gauteng 411057</li>
+                                                    <li class="hover-text-secondary"><i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1 hover-text-secondary"></i>1095 Eitemal Avenue, Florida Ext 11, 1709</li>
                                                     <!-- <li class="hover-text-primary"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1"></i>+1 246-345-0695</li> -->
-													<li class="hover-text-secondary"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1 hover-text-secondary"></i>+27 80555 08899</li>
-                                                    <li class="hover-text-secondary"><i class="fas fa-envelope text-white mr-2 font-13 mt-1 hover-text-secondary"></i>info@kasirentals.com</li>
+													<li class="hover-text-secondary"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1 hover-text-secondary"></i>+27 82 378 7011</li>
+                                                    <li class="hover-text-secondary"><i class="fas fa-envelope text-white mr-2 font-13 mt-1 hover-text-secondary"></i>info@kasirentals.co.za</li>
                                                 </ul>
                                             </div>
                                             <div class="footer-widget media-widget mt-4 text-white hover-text-secondary"> <a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-whatsapp"></i></a> <a href="#"><i class="fab fa-google-plus-g"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"></a> </div>

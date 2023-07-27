@@ -1,48 +1,59 @@
 <?php 
 include("config.php");
-$error="";
-$msg="";
-if(isset($_REQUEST['reg']))
+$error = "";
+$msg = "";
+
+function generateUniqueIdentifier($length = 6)
 {
-	$name=$_REQUEST['name'];
-	$email=$_REQUEST['email'];
-	$phone=$_REQUEST['phone'];
-	$pass=$_REQUEST['pass'];
-	$utype=$_REQUEST['utype'];
-	
-	$uimage=$_FILES['uimage']['name'];
-	$temp_name1 = $_FILES['uimage']['tmp_name'];
-	
-	$query = "SELECT * FROM user where uemail='$email'";
-	$res=mysqli_query($con, $query);
-	$num=mysqli_num_rows($res);
-	
-	if($num == 1)
-	{
-		$error = "<p class='alert alert-warning'>Email Id already Exist</p> ";
-	}
-	else
-	{
-		
-		if(!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage))
-		{
-			
-			$sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage) VALUES ('$name','$email','$phone','$pass','$utype','$uimage')";
-			$result=mysqli_query($con, $sql);
-			move_uploaded_file($temp_name1,"admin/user/$uimage");
-			   if($result){
-				   $msg = "<p class='alert alert-success'>Register Successfully</p> ";
-			   }
-			   else{
-				   $error = "<p class='alert alert-warning'>Register Not Successfully</p> ";
-			   }
-		}else{
-			$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-		}
-	}
-	
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $identifier = 'REF:';
+    for ($i = 0; $i < $length; $i++) {
+        $randomCharacter = $characters[rand(0, strlen($characters) - 1)];
+        $identifier .= $randomCharacter;
+    }
+    return $identifier;
+}
+
+if (isset($_REQUEST['reg'])) {
+    $name = $_REQUEST['name'];
+    $email = $_REQUEST['email'];
+    $phone = $_REQUEST['phone'];
+    $pass = $_REQUEST['pass'];
+    $utype = $_REQUEST['utype'];
+    
+    $uimage = $_FILES['uimage']['name'];
+    $temp_name1 = $_FILES['uimage']['tmp_name'];
+    
+    $query = "SELECT * FROM user where uemail='$email'";
+    $res = mysqli_query($con, $query);
+    $num = mysqli_num_rows($res);
+    
+    if ($num == 1) {
+        $error = "<p class='alert alert-warning'>Email Id already Exist</p> ";
+    } else {
+        if (!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage)) {
+            // Generate the unique identifier.
+            $unique_identifier = generateUniqueIdentifier();
+
+            // Insert the user data into the database with the unique identifier.
+            $sql = "INSERT INTO user (uname, uemail, uphone, upass, utype, uimage, unique_identifier) 
+                    VALUES ('$name', '$email', '$phone', '$pass', '$utype', '$uimage', '$unique_identifier')";
+
+            $result = mysqli_query($con, $sql);
+            move_uploaded_file($temp_name1, "admin/user/$uimage");
+            if ($result) {
+                $msg = "<p class='alert alert-success'>Register Successfully</p> ";
+            } else {
+                $error = "<p class='alert alert-warning'>Register Not Successfully</p> ";
+            }
+        } else {
+            $error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+        }
+    }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,54 +175,31 @@ if(isset($_REQUEST['reg']))
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="phone" class="form-control"
-<<<<<<< HEAD
-                                                placeholder="eg, +27630119876*" maxlength="10">
-=======
-                                                placeholder="Your Phone*" maxlength="10">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
+                                                placeholder="Your Phone, eg, 0630119876" maxlength="10">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="pass" class="form-control"
                                                 placeholder="Your Password*">
                                         </div>
 
-<<<<<<< HEAD
-                                        <!-- <div class="form-check-inline">
-=======
                                         <div class="form-check-inline">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                             <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="utype" value="user"
+                                                <input type="radio" class="form-check-input" name="utype" value="User"
                                                     checked>User
                                             </label>
-<<<<<<< HEAD
-                                        </div> -->
+                                        </div>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="utype"
-                                                    value="agent">Landlord
+                                                    value="Landlord">Landlord
                                             </label>
                                         </div>
                                         <!-- <div class="form-check-inline disabled">
-=======
-                                        </div>
-                                        <div class="form-check-inline">
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="utype"
-                                                    value="agent">Agent
+                                                    value="Builder">Builder
                                             </label>
-                                        </div>
-                                        <div class="form-check-inline disabled">
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="utype"
-                                                    value="builder">Builder
-                                            </label>
-<<<<<<< HEAD
                                         </div> -->
-=======
-                                        </div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
                                         <div class="form-group">
                                             <label class="col-form-label"><b>User Image</b></label>

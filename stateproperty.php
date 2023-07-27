@@ -109,34 +109,23 @@ include("config.php");
 							<?php 
 							
 								$city=$_REQUEST['id'];
-								$query=mysqli_query($con,"SELECT * from property where city='".$city."'");
+								$query = mysqli_query($con, "SELECT * FROM property WHERE city='" . $city . "' AND approved = 1");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
 									
                             <div class="col-md-6">
                                 <div class="featured-thumb hover-zoomer mb-4">
-<<<<<<< HEAD
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['21'];?>" alt="pimage" style="width: 370px; height: 209.83px; object-fit: cover;">
                                         
                                         <div class="sale bg-secondary text-white">For <?php echo $row['6'];?></div>
-=======
-                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage" style="width: 370px; height: 209.83px; object-fit: cover;">
-                                        
-                                        <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         <!-- <div class="price text-primary text-capitalize">$<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div> -->
                                         
                                     </div>
                                     <div class="featured-thumb-data shadow-one">
                                         <div class="p-4">
-<<<<<<< HEAD
                                             <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a></h5>
                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['18'] . ', ' . $row['19']; ?></span> </div>
-=======
-                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span> </div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                         <!-- <div class="px-4 pb-4 d-inline-block w-100">
                                             <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['uname'];?></div>
                                             <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
@@ -193,7 +182,6 @@ include("config.php");
                             <button type="submit" value="submit" name="calc" class="btn btn-primary mt-4">Calculate EMI</button>
                         </form>
                         </div> -->
-<<<<<<< HEAD
 
                         <div class="sidebar-widget mt-5">
                                 <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Search
@@ -264,8 +252,6 @@ include("config.php");
                                 </ul>
                             </div>
 
-=======
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                         
                         <div class="sidebar-widget mt-5">
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>
@@ -276,15 +262,9 @@ include("config.php");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>
-<<<<<<< HEAD
                                 <li> <img src="admin/property/<?php echo $row['21'];?>" alt="pimage" style="width: 80px; height: 53.33px; object-fit: cover;">
                                     <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a></h6>
                                     <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['18'] . ', ' . $row['19']; ?></span>
-=======
-                                <li> <img src="admin/property/<?php echo $row['20'];?>" alt="pimage" style="width: 80px; height: 53.33px; object-fit: cover;">
-                                    <h6 class="text-secondary hover-text-primary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
-                                    <span class="font-14"><i class="fas fa-map-marker-alt icon-primary icon-small"></i> <?php echo $row['17'] . ', ' . $row['18']; ?></span>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                     
                                 </li>
                                 <?php } ?>

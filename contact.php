@@ -124,21 +124,21 @@ if(isset($_POST['send']))
                                 <li class="d-flex mb-4"> <i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Address</h5>
-                                        <span class="text-secondary">Samgxika Plaza Office No 03, Laxmi Chowk,Near Confert Hotel, Fourways, Johannesburg, Gauteng 411057</span> 
+                                        <span class="text-secondary">1095 Eitemal Avenue, Florida Ext 11, 1709</span> 
 										<!-- <span class="text-secondary">Collins Street West, Victoria 8007, Australia</span> -->
 										</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Call Us</h5>
-                                        <span class="d-table text-secondary">+27 80555 08899</span>
+                                        <span class="d-table text-secondary">+27 82 378 7011</span>
 										<!-- <span class="text-secondary">012 34 567 809 </span> -->
 									</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-envelope text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Email </h5>
-										<span class="d-table text-secondary">info@kasirentals.com</span>
+										<span class="d-table text-secondary">info@kasirentals.co.za</span>
 										<!-- <span class="text-secondary">helpline@homex.com</span> -->
 										</div>
                                 </li>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
@@ -63,46 +62,6 @@ if (isset($_POST['update_profile'])) {
 }
 ?>
 
-=======
-<?php 
-ini_set('session.cache_limiter','public');
-session_cache_limiter(false);
-session_start();
-include("config.php");
-if(!isset($_SESSION['uemail']))
-{
-	header("location:login.php");
-}
-
-////// code
-$error='';
-$msg='';
-if(isset($_POST['insert']))
-{
-	$name=$_POST['name'];
-	$phone=$_POST['phone'];
-
-	$content=$_POST['content'];
-	
-	$uid=$_SESSION['uid'];
-	
-	if(!empty($name) && !empty($phone) && !empty($content))
-	{
-		
-		$sql="INSERT INTO feedback (uid,fdescription,status) VALUES ('$uid','$content','0')";
-		   $result=mysqli_query($con, $sql);
-		   if($result){
-			   $msg = "<p class='alert alert-success'>Feedback Send Successfully</p> ";
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Feedback Not Send Successfully</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-	}
-}								
-?>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,31 +96,10 @@ if(isset($_POST['insert']))
 
 <!--	Title
 	=========================================================-->
-<<<<<<< HEAD
 <title>Exclusive Kasi Living - Profile</title>
 </head>
 
 <body>
-=======
-    <title>Exclusive Kasi Living - Profile</title>
-</head>
-
- <!-- Chat Bot Code -->
- <!-- <div id="assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"></div>
-  <script src="https://unpkg.com/assistant-widget@1.5.6/dist/lib.js"></script>
-  <script>
-      WAWidget.init({
-          el: document.querySelector("#assistant-widget-05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4"),
-          endpoint: "https://assistant.workativ.com/widget",
-          widget_id: "05cb6cd7-272e-4c5a-9a4c-fb1036d47ed4",
-          openByDefault: false
-      });
-  </script> -->
-   <!-- Chat Bot Code End -->
-
-<body>
-
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 <!--	Page Loader
 =============================================================
 <div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
@@ -171,7 +109,6 @@ if(isset($_POST['insert']))
 	  </div>
 	</div>
 </div>
-<<<<<<< HEAD
 -->
 
 <div id="page-wrapper">
@@ -180,17 +117,6 @@ if(isset($_POST['insert']))
         <?php include("include/header.php");?>
         <!--	Header end  -->
 
-=======
---> 
-
-
-<div id="page-wrapper">
-    <div class="row"> 
-        <!--	Header start  -->
-		<?php include("include/header.php");?>
-        <!--	Header end  -->
-        
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
         <!--	Banner   --->
         <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">
@@ -209,7 +135,6 @@ if(isset($_POST['insert']))
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
         <!--	Banner   --->
 
 
@@ -303,99 +228,3 @@ if(isset($_POST['insert']))
 <script src="js/custom.js"></script>
 </body>
 </html>
-=======
-         <!--	Banner   --->
-		 
-		 
-		<!--	Submit property   -->
-        <div class="full-row">
-            <div class="container">
-                    <div class="row">
-						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Profile</h2>
-                        </div>
-					</div>
-                <div class="dashboard-personal-info p-5 bg-white">
-                    <form action="#" method="post">
-                        <h5 class="text-secondary border-bottom-on-white pb-3 mb-4">Feedback Form</h5>
-						<?php echo $msg; ?><?php echo $error; ?>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group">
-                                    <label for="user-id">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
-                                </div>                
-                                
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone"  class="form-control" placeholder="Enter Phone" maxlength="10">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="about-me">Description</label>
-                                    <textarea class="form-control" name="content" rows="7" placeholder="Enter Description"></textarea>
-                                </div>
-                                <input type="submit" class="btn btn-primary mb-4" name="insert" value="Send">
-                            </div>
-							</form>
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-5 col-md-12">
-								<?php 
-									$uid=$_SESSION['uid'];
-									$query=mysqli_query($con,"SELECT * FROM `user` WHERE uid='$uid'");
-									while($row=mysqli_fetch_array($query))
-									{
-								?>
-                                <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['6'];?>" alt="userimage">
-                                    <div class="mb-4 mt-3">
-                                        
-                                    </div>
-									
-                                    <div class="font-18">
-                                        <div class="mb-1 text-capitalize"><b>Name:</b> <?php echo $row['1'];?></div>
-                                        <div class="mb-1 text-capitalize"><b>Email:</b> <?php echo $row['2'];?></div>
-                                        <div class="mb-1 text-capitalize"><b>Phone:</b> <?php echo $row['3'];?></div>
-										<div class="mb-1 text-capitalize"><b>Role:</b> <?php echo $row['5'];?></div>
-                                    </div>
-									<?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>            
-            </div>
-        </div>
-	<!--	Submit property   -->
-        
-        
-        <!--	Footer   start-->
-		<?php include("include/footer.php");?>
-		<!--	Footer   start-->
-        
-        <!-- Scroll to top --> 
-        <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a> 
-        <!-- End Scroll To top --> 
-    </div>
-</div>
-<!-- Wrapper End --> 
-
-<!--	Js Link
-============================================================--> 
-<script src="js/jquery.min.js"></script> 
-<!--jQuery Layer Slider --> 
-<script src="js/greensock.js"></script> 
-<script src="js/layerslider.transitions.js"></script> 
-<script src="js/layerslider.kreaturamedia.jquery.js"></script> 
-<!--jQuery Layer Slider --> 
-<script src="js/popper.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/owl.carousel.min.js"></script> 
-<script src="js/tmpl.js"></script> 
-<script src="js/jquery.dependClass-0.1.js"></script> 
-<script src="js/draggable-0.1.js"></script> 
-<script src="js/jquery.slider.js"></script> 
-<script src="js/wow.js"></script> 
-<script src="js/custom.js"></script>
-</body>
-</html>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
