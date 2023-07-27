@@ -12,7 +12,22 @@ include("config.php");
 //     $uname = $_SESSION['uname'];
 //     echo $uname;
 // }
-// ?>
+// 
+
+// Fetch only the approved properties from the database
+$sql = "SELECT * FROM property WHERE approved = 1";
+$result = mysqli_query($con, $sql);
+
+// Display the approved properties on the website
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Display property details (e.g., title, image, etc.) as per your design
+    }
+} else {
+    echo "No properties available.";
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -93,7 +108,6 @@ include("config.php");
                                             <div class="form-group">
                                                 <select class="form-control" name="type">
                                                     <option value="">Select Type</option>
-<<<<<<< HEAD
                                                     <option value="Apartment">Apartment</option>
                                                     <option value="Room">Room</option>
                                                     <option value="Back Room Normal">Back Room (Normal)</option>
@@ -101,14 +115,6 @@ include("config.php");
                                                     <option value="Flat">Flat</option>
                                                     <option value="House">House</option>
                                                     <option value="Bachelor">Bachelor</option>
-=======
-                                                    <option value="Room">Room</option>
-                                                    <option value="Back Room">Back Room</option>
-                                                    <option value="Apartment">Apartment</option>
-                                                    <option value="Flat">Flat</option>
-                                                    <option value="House">House</option>
-                                                    <option value="Cottage">Cottage</option>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                                                 </select>
                                             </div>
                                         </div>
@@ -207,7 +213,7 @@ include("config.php");
                                     <img src="images/thumbnail4/1.jpg" style="height:340px" alt="Kasi Property Rentals">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-									$query=mysqli_query($con,"SELECT count(city) as prop_count, property.* FROM property where city like '%soweto%'");
+									$query = mysqli_query($con, "SELECT count(city) as prop_count, property.* FROM property WHERE city LIKE '%soweto%' AND approved = 1");
 										while($row=mysqli_fetch_assoc($query))
 											{
 									?>
@@ -227,7 +233,7 @@ include("config.php");
                                     <img src="images/thumbnail4/2.jpg" style="height:340px" alt="Kasi Property Rentals">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-									$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='Brakpan' or 'Soweto'");
+									$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='Brakpan' or 'Soweto' AND approved = 1");
 										while($row=mysqli_fetch_array($query))
 											{
 									?>
@@ -247,7 +253,7 @@ include("config.php");
                                     <img src="images/thumbnail4/3.jpg" style="height:340px" alt="Kasi Property Rentals">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
-									$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='alexandra' or 'Alexandra'");
+									$query=mysqli_query($con,"SELECT count(city), property.* FROM property where city='alexandra' or 'Alexandra' AND approved = 1");
 										while($row=mysqli_fetch_array($query))
 											{
 									?>
@@ -265,7 +271,7 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/4.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                     <?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='gauteng' or 'Gauteng'");
+										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where state='gauteng' or 'Gauteng' AND approved = 1");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -296,101 +302,59 @@ include("config.php");
                             <li class="nav-item"> <a class="nav-link py-3" id="pills-contact-tab2" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Top Sale</a> </li>
                             <li class="nav-item"> <a class="nav-link py-3" id="pills-contact-tab3" data-toggle="pill" href="#pills-resturant" role="tab" aria-controls="pills-contact" aria-selected="false">Best Sale</a> </li>
                         </ul> -->
-                        </div> -
+                        </div> 
+
                         <div class="col-md-12">
-                            <div class="tab-content mt-4" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                    aria-labelledby="pills-home">
-                                    <div class="row">
+        <div class="tab-content mt-4" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
+                <div class="row">
 
-                                        <?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
-										while($row=mysqli_fetch_array($query))
-										{
-									?>
+                    <?php
+                    // Fetch only the approved properties from the database
+                    $query = mysqli_query($con, "SELECT property.*, user.uname, user.utype, user.uimage
+                                                 FROM `property`, `user`
+                                                 WHERE property.uid=user.uid AND property.approved=1
+                                                 ORDER BY date DESC LIMIT 9");
 
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="featured-thumb hover-zoomer mb-4">
-                                                <div class="overlay-black overflow-hidden position-relative"> <img
-<<<<<<< HEAD
-                                                        src="admin/property/<?php echo $row['21'];?>" alt="pimage"
-                                                        style="height:340px">
-                                                    <div class="featured bg-primary text-white">New</div>
-                                                    <div class="sale bg-secondary text-white text-capitalize">For
-                                                        <?php echo $row['6'];?></div>
-=======
-                                                        src="admin/property/<?php echo $row['20'];?>" alt="pimage"
-                                                        style="height:340px">
-                                                    <div class="featured bg-primary text-white">New</div>
-                                                    <div class="sale bg-secondary text-white text-capitalize">For
-                                                        <?php echo $row['5'];?></div>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
-                                                    <!-- <div class="price text-primary"><b>$<?php echo $row['14'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div> -->
-                                                </div>
-                                                <div class="featured-thumb-data shadow-one text-center">
-                                                    <div class="p-3">
-                                                        <h5
-                                                            class="text-secondary hover-text-primary mb-2 text-capitalize">
-                                                            <a
-<<<<<<< HEAD
-                                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['2'];?></a>
-                                                        </h5>
-                                                        <span class="location text-capitalize"><i
-                                                                class="fas fa-map-marker-alt text-primary"></i>
-                                                            <?php echo $row['18'] . ', ' . $row['19'];?></span>
-=======
-                                                                href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
-                                                        </h5>
-                                                        <span class="location text-capitalize"><i
-                                                                class="fas fa-map-marker-alt text-primary"></i>
-                                                            <?php echo $row['17'] . ', ' . $row['18'];?></span>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
-                                                    </div>
-                                                    <div class="bg-gray quantity px-4 pt-4 text-center">
-                                                        <ul>
-                                                            <!-- <li><span
-                                                                    class="text-secondary"><?php echo $row['12'];?></span>
-                                                                Meters</li> -->
-                                                            <!-- <li><span
-                                                                    class="text-secondary"><?php echo $row['6'];?></span>
-                                                                Bedroom(s)</li> -->
-                                                            <!-- <li><span
-                                                                    class="text-secondary">R<?php echo $row['13'];?></span>
-                                                                Rent <?php echo $row['15'];?></li> -->
-                                                            <li><span
-<<<<<<< HEAD
-                                                                    class="text-secondary">R<?php echo $row['16'];?></span>
-                                                                Rent</li>
-                                                                <li><span
-                                                                    class="text-secondary">R<?php echo $row['8'];?></span>
-                                                                Deposit</li>
-                                                                <li><span class="text-secondary"><?php echo $row['7'];?></span>Room(s)</li>
-=======
-                                                                    class="text-secondary">R<?php echo $row['13'];?></span>
-                                                                Rent</li>
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
-                                                            <!-- <li><span class="text-secondary"><?php echo $row['7'];?></span> Bathroom</li>
-                                        <li><span class="text-secondary"><?php echo $row['8'];?></span> Balcony</li>
-                                        <li><span class="text-secondary"><?php echo $row['9'];?></span> Kitchen</li> -->
-                                                        </ul>
-                                                    </div>
+                    while ($row = mysqli_fetch_array($query)) {
+                    ?>
 
-                                                    <!-- <div class="p-4 d-inline-block w-100">
-        <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['uname'];?></div>
-        <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
-    </div> -->
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <?php } ?>
-
-                                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="featured-thumb hover-zoomer mb-4">
+                            <div class="overlay-black overflow-hidden position-relative">
+                                <img src="admin/property/<?php echo $row['21']; ?>" alt="pimage" style="height: 340px">
+                                <div class="featured bg-primary text-white">New</div>
+                                <div class="sale bg-secondary text-white text-capitalize">For <?php echo $row['6']; ?></div>
+                            </div>
+                            <div class="featured-thumb-data shadow-one text-center">
+                                <div class="p-3">
+                                    <h5 class="text-secondary hover-text-primary mb-2 text-capitalize">
+                                        <a href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['2']; ?></a>
+                                    </h5>
+                                    <span class="location text-capitalize">
+                                        <i class="fas fa-map-marker-alt text-primary"></i>
+                                        <?php echo $row['18'] . ', ' . $row['19']; ?>
+                                    </span>
                                 </div>
-
-
-
+                                <div class="bg-gray quantity px-4 pt-4 text-center">
+                                    <ul>
+                                        <li><span class="text-secondary">R<?php echo $row['16']; ?></span> Rent</li>
+                                        <li><span class="text-secondary">R<?php echo $row['8']; ?></span> Deposit</li>
+                                        <li><span class="text-secondary"><?php echo $row['7']; ?></span> Room(s)</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <?php
+                    } // end of while loop
+                    ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
                     </div>
                 </div>
             </div>

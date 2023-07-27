@@ -1,5 +1,4 @@
 <?php 
-<<<<<<< HEAD
 ini_set('session.cache_limiter', 'public');
 session_cache_limiter(false);
 session_start();
@@ -16,12 +15,6 @@ if (isset($_SESSION['uemail'])) {
         $uniqueIdentifier = $row['unique_identifier'];
     }
 }
-=======
-ini_set('session.cache_limiter','public');
-session_cache_limiter(false);
-session_start();
-include("config.php");							
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 ?>
 
 <html lang="en" dir="ltr">
@@ -36,7 +29,6 @@ include("config.php");
 </head>
 
 <style>
-<<<<<<< HEAD
   @media (max-width: 991px) {
     .nav.item {
       margin-left: 17px !important;
@@ -54,7 +46,7 @@ include("config.php");
 
   .navbar-brand img {
     margin-right: 148px !important; /* Optional: Add some spacing between the logo and text */
-    height: 80px !important;
+    height:48px !important;
   }
   .navbar .navbar-toggler {
     color: var(--theme-white-color);
@@ -63,22 +55,6 @@ include("config.php");
   }
   }
   
-=======
-  @media (max-width: 767px) {
-    .nav.item {
-      margin-left: 17px;
-      margin-top: -32px;
-    }
-    .navbar-brand {
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar-brand img {
-    margin-right: 208px !important; /* Optional: Add some spacing between the logo and text */
-  }
-  }
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
 
 
 </style>
@@ -98,7 +74,7 @@ include("config.php");
 
                         <?php } else { ?>
 
-                        <li><a href="#"><i class="fas fa-phone-alt text-primary mr-1"></i>(012) 345 678 102</a>
+                        <li><a href="#"><i class="fas fa-phone-alt text-primary mr-1"></i>+27 82 378 7011</a>
                         </li>
                         <?php } ?>
 
@@ -111,7 +87,7 @@ include("config.php");
 
                         <?php } else { ?>
 
-                        <li><a href="#"><i class="fas fa-envelope text-primary mr-1"></i>info@kasirentals.com</a>
+                        <li><a href="#"><i class="fas fa-envelope text-primary mr-1"></i>info@kasirentals.co.za</a>
                         </li>
                         <?php } ?>
                     </ul>
@@ -142,11 +118,7 @@ include("config.php");
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light p-0"> <a class="navbar-brand position-relative"
                             href="index.php"><img class="nav-logo animate__animated animate__slideInDown"
-<<<<<<< HEAD
-                                src="img_new/logo.png" alt="" style="height: 142px;"></a><b
-=======
-                                src="img_new/logo.png" alt="" style="height: 55px;"></a><b
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
+                                src="images/logo/ekl.SVG" alt="" style="height: 70px !important;"></a><b
                             class="animate__animated animate__slideInDown link-dark"
                             style="color:black; font-size:large;"><span><a href="" style="color:black;"></a></span></b>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -196,7 +168,6 @@ include("config.php");
 
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <?php  
-<<<<<<< HEAD
                             if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
                             ?>
                                 <?php if(isset($_SESSION['uname'])) { ?>
@@ -215,18 +186,6 @@ include("config.php");
 
 
 
-=======
-                                if(isset($_SESSION['uemail'])) { // Check if the 'uemail' session variable is set
-                            ?>
-                            <?php if(isset($_SESSION['uname'])) { ?>
-                            <i class="nav item"><?php echo $_SESSION['uname']; ?></i>
-                            <?php } ?>
-                            <?php 
-                                } 
-                            ?>
-
-
->>>>>>> 46cfa36aa454497bb1648cb7673855ffc67d9936
                             <!-- <?php if(isset($_SESSION['uemail'])) { ?>
                             <li><a href="#"><i
                                         class="fas fa-envelope text-primary mr-1"></i><?php echo $_SESSION['uemail']; ?></a>

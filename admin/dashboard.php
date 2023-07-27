@@ -1,23 +1,52 @@
 <?php
 session_start();
 require("config.php");
-////code
- 
-if(!isset($_SESSION['auser']))
-{
-	header("location:index.php");
+
+// Check if the user is logged in; if not, redirect to index.php
+if (!isset($_SESSION['auser'])) {
+    header("location: index.php");
+    exit();
 }
+
+// Fetch all users from the database
+$sqlUsers = "SELECT * FROM `user`";
+$resultUsers = mysqli_query($connection, $sqlUsers);
+
+// Fetch all admins from the database
+$sqlAdmins = "SELECT * FROM `admin`";
+$resultAdmins = mysqli_query($connection, $sqlAdmins);
+
+// Fetch all properties from the database
+$sqlProperties = "SELECT * FROM `property`";
+$resultProperties = mysqli_query($connection, $sqlProperties);
+
+// Check if the queries were successful
+if (!$resultUsers || !$resultProperties || !$resultAdmins) {
+    die("Database query failed: " . mysqli_error($connection));
+}
+
+// Get the total number of users
+$totalUsers = mysqli_num_rows($resultUsers);
+
+// Get the total number of admins
+$totalAdmins = mysqli_num_rows($resultAdmins);
+
+// Get the total number of properties
+$totalProperties = mysqli_num_rows($resultProperties);
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Ventura - Dashboard</title>
+        <title>EKM Admin - Dashboard</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/ekl.SVG">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,11 +61,6 @@ if(!isset($_SESSION['auser']))
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
-		
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
     </head>
     <body>
 	
@@ -56,7 +80,7 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome Admin!</h3>
+								<h3 class="page-title">Welcome <?php echo $_SESSION['auser'];?></h3>
 								<p></p>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active">Dashboard</li>
@@ -78,7 +102,7 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>1234</h3>
+										<h3><?php echo $totalUsers; ?></h3>
 										
 										<h6 class="text-muted">Users</h6>
 										<div class="progress progress-sm">
@@ -99,9 +123,9 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>123</h3>
+										<h3><?php echo $totalProperties; ?></h3>
 										
-										<h6 class="text-muted">Request Blood</h6>
+										<h6 class="text-muted">Properties</h6>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-success w-50"></div>
 										</div>
@@ -120,9 +144,9 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>432</h3>
+									<h3><?php echo $totalAdmins; ?></h3>
 										
-										<h6 class="text-muted">Donor</h6>
+										<h6 class="text-muted">Admins</h6>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-danger w-50"></div>
 										</div>
@@ -141,7 +165,7 @@ if(!isset($_SESSION['auser']))
 									</div>
 									<div class="dash-widget-info">
 										
-										<h3>342</h3>
+										<h3>0</h3>
 										
 										<h6 class="text-muted">Contact Message</h6>
 										<div class="progress progress-sm">
@@ -173,7 +197,7 @@ if(!isset($_SESSION['auser']))
 							<!-- Invoice Chart -->
 							<div class="card card-chart">
 								<div class="card-header">
-									<h4 class="card-title">Order Status</h4>
+									<h4 class="card-title">Property Status</h4>
 								</div>
 								<div class="card-body">
 									<div id="morrisLine"></div>
