@@ -97,7 +97,7 @@ if(!isset($_SESSION['auser']))
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>PID</th>
+                                        <th>Approved</th>
                                         <th>Reference ID</th>
                                         <th>Title</th>
                                         <th>Description</th>
@@ -137,7 +137,7 @@ if(!isset($_SESSION['auser']))
 												?>
 
                                     <tr>
-                                        <td><?php echo $row['0']; ?></td>
+                                        <td><?php echo $row['34']; ?></td>
                                         <td><?php echo $row['1']; ?></td>
                                         <td><?php echo $row['2']; ?></td>
                                         <td><?php echo $row['3']; ?></td>
