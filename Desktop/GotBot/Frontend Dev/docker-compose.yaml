@@ -1,0 +1,435 @@
+version: "3.7"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_NODENAME: gotbot@rabbitmq
+      RABBITMQ_DEFAULT_USER: customcare
+      RABBITMQ_DEFAULT_PASS: rabbiteatsmydata
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+      # - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - app-net
+
+  messenger:
+    depends_on:
+      - rabbitmq
+    build:
+      context: ./message-handler
+      dockerfile: Dockerfile-dev
+    image: messenger:local
+    container_name: messenger
+    command: nodemon --inspect=0.0.0.0:9230 app.js
+    volumes:
+      - ./message-handler:/usr/src/messenger
+      - /usr/src/messenger/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 3002
+      DATABASE: mongodb://mongo:27017/customcare
+      AIR_SERVICE: http://air-service:3000
+      RABBIT_SERVICE: rabbitmq
+      MESSAGE_LIMIT: 20
+      RABBIT_USER: customcare
+      RABBIT_PASS: rabbiteatsmydata
+    ports:
+      - 3002:3002
+      - 9227:9230
+    networks:
+      - app-net
+  # rasa:
+  #   image: rasa/rasa:latest-full
+  #   networks:
+  #     - app-net
+  #   ports:
+  #     - "5005:5005"
+  #   volumes:
+  #     - "./rasa/:/app/"
+  #     - ./rasa/app/models:/app/models
+  #     - ./rasa/app/config:/app/config
+  #     - ./rasa/app/endpoints:/app/endpoints
+  #   command:
+  #     - run
+  #     - --cors
+  #     - "*"
+  #     - -m
+  #     - models
+  #     - --enable-api
+  #     - --endpoints
+  #     - config/endpoints.yml
+  #     - --debug
+
+  # duckling:
+  #   image: rasa/duckling
+  #   networks: [ "app-net" ]
+  #   ports:
+  #     - "8000:8000"
+
+  # rasa-action-server:
+  #   build:
+  #     context: ./rasa-action-server
+  #     dockerfile: Dockerfile-development
+  #   container_name: rasa-action-server
+  #   environment:
+  #     DATABASE: mongodb://database-service:27017/customcare
+  #   volumes:
+  #     - ./rasa-action-server/:/usr/app/
+  #     - /usr/app/node_modules
+  #   ports:
+  #     - "5055:5055"
+  #     - "9231:9231"
+  #   networks:
+  #     - app-net
+
+
+
+
+
+  air:
+    depends_on:
+      - rabbitmq
+    build:
+      context: ./gotbot-air
+      dockerfile: Dockerfile-dev
+    image: gotbot-air:local
+    container_name: gotbot-air
+    command: nodemon --inspect=0.0.0.0:9229 app.js
+    volumes:
+      - ./gotbot-air:/usr/src/air
+      - /usr/src/air/node_modules
+    environment:
+      NODE_ENV: development
+      DATABASE: mongodb://mongo:27017/customcare
+      JWTSECRET: howmuchgothasagotbotgotibelieveitisalot
+      CUSTOMERDOMAIN: http://localhost:4200
+      CLIENTDOMAIN: http://localhost:3001
+      WEBCHATDOMAIN: http://dev-webchat.gotbot.co.za
+      BUCKET: staging-webchat
+      NAMESPACE: dev
+      CLIENT_SERVICE: http://client-service:3001
+      AWS_ACCESS_KEY_ID: AKIAYHCXUKGLLML2BGLN
+      AWS_SECRET_ACCESS_KEY: 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
+      AWS_REGION: eu-central-1
+      CLOUDFRONT_DISTRIBUTION_ID: EWAFN373YF86W
+      RABBIT_SERVICE: rabbitmq
+      RABBIT_USER: customcare
+      RABBIT_PASS: rabbiteatsmydata
+    ports:
+      - 3000:3000
+      - 9229:9229
+    networks:
+      app-net:
+        aliases:
+          - air-service
+
+  # client:
+  #     depends_on:
+  #         - rabbitmq
+  #     build:
+  #         context: ./gotbot-client
+  #         dockerfile: Dockerfile-dev
+  #     image: gotbot-client:local
+  #     container_name: gotbot-client
+  #     volumes:
+  #         - ./gotbot-client:/usr/src/client
+  #         - /usr/src/client/node_modules
+  #     environment:
+  #         NODE_ENV: development
+  #         PORT: 3001
+  #         DATABASE: mongodb://mongo:27017/customcare
+  #         CUSTOMCARE_HOST: http://air-service:3000/air/v2
+  #         CUSTOMCARE_APITOKEN: 0ac73e06-e12c-4f89-9742-4ce3cdb2bb1d
+  #         WEBCHAT_ALLOWED_DOMAINS: http://dev-webchat.gotbot.co.za
+  #         DOMAIN: https://4f7a0333.ngrok.io
+  #         RABBIT_SERVICE: rabbitmq
+  #         RABBIT_USER: customcare
+  #         RABBIT_PASS: rabbiteatsmydata
+  #         MESSAGE_LIMIT: 20
+  #     ports:
+  #         - 3001:3001
+  #         - 9228:9228
+  #     networks:
+  #         app-net:
+  #             aliases:
+  #                 - client-service
+  console:
+    build:
+      context: ./gotbot-console
+      dockerfile: Dockerfile-development
+    image: gotbot-console:local
+    container_name: gotbot-console
+    volumes:
+      - ./gotbot-console:/app
+      - /app/node_modules
+    ports:
+      - 4200:4200
+    networks:
+      app-net:
+        aliases:
+          - console-service
+
+  # cron:
+  #     depends_on:
+  #         - mongodb
+  #     build:
+  #         context: ./gotbot-cron
+  #         dockerfile: Dockerfile-dev
+  #     image: gotbot-cron:local
+  #     container_name: gotbot-cron
+  #     environment:
+  #         DATABASE: mongodb://mongo:27017
+  #         DATABASE_NAME: customcare
+  #         AIR_DOMAIN: http://air-service:3000/api/v2
+  #         PORT: 80
+  #         RABBIT_HOST: rabbitmq
+  #         RABBIT_PORT: 5672
+  #         RABBIT_USER: customcare
+  #         RABBIT_PASS: rabbiteatsmydata
+  #     volumes:
+  #         - ./gotbot-cron:/app
+  #     ports:
+  #         - 80:80
+  #     networks:
+  #         - app-net
+
+  # reporting-handler:
+  #     depends_on:
+  #         - mongodb
+  #     build:
+  #         context: ./reporting-handler
+  #         dockerfile: Dockerfile-dev
+  #         args:
+  #             GIT_USER: ThePhiri
+  #             GIT_PAT: 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
+  #     image: reporting-handler:local
+  #     container_name: reporting-handler
+  #     environment:
+  #         DATABASE: mongodb://mongo:27017
+  #         DATABASE_NAME: customcare
+  #         CONTEXT_TIMEOUT: 3s
+  #         DEBUG: 'true'
+  #         JWTSECRET: howmuchgothasagotbotgotibelieveitisalot
+  #         PORT: 3008
+  #         AWS_REGION: eu-west-1
+  #         RABBIT_HOST: rabbitmq
+  #         RABBIT_PORT: 5672
+  #         RABBIT_USER: customcare
+  #         RABBIT_PASS: rabbiteatsmydata
+  #         AWS_SHARED_CREDENTIALS_FILE: /run/secrets/credentials
+  #     ports:
+  #         - 3008:3008
+  #     volumes:
+  #         - ./reporting-handler:/app
+  #         - ~/.aws/credentials:/run/secrets/credentials
+  #     networks:
+  #         - app-net
+
+  # channel-handler:
+  #   build:
+  #     context: ./channel-handler
+  #     dockerfile: Dockerfile-dev
+  #     args:
+  #       GIT_USER: ThePhiri
+  #       GIT_PAT: xxx
+  #   image: channel-handler:local
+  #   container_name: channel-handler
+  #   environment:
+  #     TWITTER_CONSUMER_KEY: iq23bu5JAcuVVSDJRSNpKebr5
+  #     TWITTER_CONSUMER_SECRET: JSFu84fJI0uS5uqHVO56klohmU66lL2a9doWiYFoZY9YHLBBZv
+  #     DATABASE: mongodb://mongo:27017
+  #     DATABASE_NAME: customcare
+  #     CONTEXT_TIMEOUT: 3s
+  #     DEBUG: 'true'
+  #     JWTSECRET: howmuchgothasagotbotgotibelieveitisalot
+  #     PORT: 3009
+  #     RABBIT_HOST: rabbitmq
+  #     RABBIT_PORT: 5672
+  #     RABBIT_USER: customcare
+  #     RABBIT_PASS: rabbiteatsmydata
+  #     RABBIT_VHOST: /
+  #     NAMESPACE: customcare
+  #     GLOBAL_RABBIT_VHOST: /
+  #     OAUTH_REDIRECT_URL: http://localhost:3003/api/resource/v3/auth/google
+  #     OAUTH_CLIENT_SECRET: QWK4rje1S1-TYXzqLvkgOTIU
+  #     OAUTH_CLIENT_ID: 724193574808-mp91acmn13jr81f2b2k1vdau9onu27ff.apps.googleusercontent.com
+  #     LINKEDIN_OAUTH_CLIENT_ID: 86kvvvj6lazl98
+  #     LINKEDIN_OAUTH_CLIENT_SECRET: BYdiZMnZJhTQsJ60
+  #     LINKEDIN_OAUTH_CLIENT_REDIRECT_URL: http://localhost:3003/api/resource/v3/auth/linkedin
+  #     LINKEDIN_WEBHOOK_URL: https://616bdb86aead.ngrok.io/api/webhook/linkedin
+  #     LINKEDIN_APP_ID: 111074666
+  #     FACEBOOK_APP_ID: 381381822424355
+  #     FACEBOOK_APP_SECRET: 971668c4b5a1ec968d84f38b13d4fc66
+  #   ports:
+  #     - 3009:3009
+  #   volumes:
+  #     # - /etc/localtime:/etc/localtime:ro
+  #     - ./channel-handler:/app
+  #   networks:
+  #     - app-net
+
+  resource-handler:
+    build:
+      context: ./resource-handler
+      dockerfile: Dockerfile-dev
+      args:
+        GIT_USER: KodeKenobi
+        GIT_PAT: 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
+    image: resource-handler:local
+    container_name: resource-handler
+    environment:
+      RABBIT_HOST: rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USER: customcare
+      RABBIT_PASS: rabbiteatsmydata
+      DATABASE: mongodb://mongo:27017
+      DATABASE_NAME: customcare
+      CONTEXT_TIMEOUT: 3s
+      PORT: 3003
+      DEBUG: "true"
+      JWTSECRET: howmuchgothasagotbotgotibelieveitisalot
+      TWITTER_CONSUMER_KEY: iq23bu5JAcuVVSDJRSNpKebr5
+      TWITTER_CONSUMER_SECRET: JSFu84fJI0uS5uqHVO56klohmU66lL2a9doWiYFoZY9YHLBBZv
+      OAUTH_REDIRECT_URL: http://localhost:3003/api/resource/v3/auth/google
+      OAUTH_CLIENT_SECRET: rzV6RCzS-9RngaC-YXnfufOr
+      OAUTH_CLIENT_ID: 188505474209-l2a78aidcslkvu60v2uni8bi55tgd3t8.apps.googleusercontent.com
+      # OAUTH_CLIENT_SECRET: QWK4rje1S1-TYXzqLvkgOTIU
+      # OAUTH_CLIENT_ID: 724193574808-mp91acmn13jr81f2b2k1vdau9onu27ff.apps.googleusercontent.com
+      LINKEDIN_OAUTH_CLIENT_ID: 86kvvvj6lazl98
+      LINKEDIN_OAUTH_CLIENT_SECRET: BYdiZMnZJhTQsJ60
+      LINKEDIN_OAUTH_CLIENT_REDIRECT_URL: http://localhost:3003/api/resource/v3/auth/linkedin
+      FACEBOOK_APP_ID: 381381822424355
+      FACEBOOK_APP_SECRET: 971668c4b5a1ec968d84f38b13d4fc66
+      # FACEBOOK_APP_ID: 1530170650652738
+      # FACEBOOK_APP_SECRET: 28d601f27dfd6776ae6d3b6331253525
+    volumes:
+      # - ./resource-handler:/app
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 3003:3003
+    networks:
+      - app-net
+
+  webhook-handler:
+    build:
+      context: ./webhook-handler
+      dockerfile: Dockerfile-dev
+      args:
+        GIT_USER: KodeKenobi
+        GIT_PAT: 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
+    image: webhook-handler:local
+    container_name: webhook-handler
+    environment:
+      PORT: 3004
+      DEBUG: "true"
+      DATABASE: mongodb://mongo:27017
+      DATABASE_NAME: customcare
+      CONTEXT_TIMEOUT: 3s
+      FACEBOOK_VERIFY_TOKEN: gotbot
+      # FACEBOOK_APP_SECRET: 971668c4b5a1ec968d84f38b13d4fc66
+      FACEBOOK_APP_SECRET: 971668c4b5a1ec968d84f38b13d4fc66
+      # FACEBOOK_APP_SECRET: 13d8966166c06407a86daf97ea09c6b4
+      TWITTER_CONSUMER_KEY: iq23bu5JAcuVVSDJRSNpKebr5
+      TWITTER_CONSUMER_SECRET: JSFu84fJI0uS5uqHVO56klohmU66lL2a9doWiYFoZY9YHLBBZv
+      TWITTER_ACCESS_TOKEN: 543470963-PO98eFe54j0PXWAnqzddD39gTDlGroFj7ms8e1Bs
+      TWITTER_ACCESS_SECRET: 9pmGinYTzJXkFLaav06wB5JHam62XSgl7Xd6O6z2IE6Om
+      TWITTER_ENV_NAME: dev
+      TWITTER_WEBHOOK_ENDPOINT: https://bee0d29fccb2.ngrok.io/api/webhook/twitter
+      TWITTER_WEBHOOK_ID: 1332283663921406000
+      RABBIT_HOST: rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USER: customcare
+      RABBIT_PASS: rabbiteatsmydata
+      LINKEDIN_CONSUMER_KEY: 86kvvvj6lazl98
+      LINKEDIN_CONSUMER_SECRET: BYdiZMnZJhTQsJ60
+      FACEBOOK_APP_ID: 381381822424355
+
+    volumes:
+      # - /etc/localtime:/etc/localtime:ro
+      - ./webhook-handler:/app
+    ports:
+      - 3004:3004
+    networks:
+      - app-net
+
+  socket-handler:
+    build:
+      context: ./socket-handler
+      dockerfile: Dockerfile-dev
+    image: socket-handler:local
+    container_name: socket-handler
+    environment:
+      PORT: 3005
+      NODE_ENV: debug
+      DATABASE: mongodb://mongo:27017/customcare
+      RABBIT_HOST: rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USER: customcare
+      RABBIT_PASS: rabbiteatsmydata
+      MESSAGE_LIMIT: 40
+      JWTSECRET: howmuchgothasagotbotgotibelieveitisalot
+    ports:
+      - 3005:3005
+    volumes:
+      - ./socket-handler:/usr/src/socket
+      - /usr/src/socket/node_modules
+      # - /etc/localtime:/etc/localtime:ro
+    networks:
+      - app-net
+
+  vue-console:
+    depends_on:
+      - resource-handler
+      - socket-handler
+      - mongodb
+      - rabbitmq
+    build:
+      context: ./gotbot-vue-console
+      dockerfile: Dockerfile
+    image: vue-console:local
+    container_name: vue-console
+    volumes:
+      - ./gotbot-vue-console:/app
+    ports:
+      - 8080:8080
+    networks:
+      - app-net
+
+  # nginx:
+  #   image: nginx:alpine
+  #   volumes:
+  #     - ./CustomCareConsoleNgx/nginx/default-dev.conf:/etc/nginx/conf.d/default.conf
+  #   ports:
+  #     - 8080:80
+  #   networks:
+  #     app-net:
+  #       aliases:
+  #         - nginx-service
+
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - 27017:27017
+    networks:
+      app-net:
+        aliases:
+          - mongo
+    volumes:
+      - mongo-data:/data/db
+      - ./backups:/backups
+      # - /etc/localtime:/etc/localtime:ro
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
+  rabbitmq-data:
+    driver: local

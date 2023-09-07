@@ -1,0 +1,14 @@
+{
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true,
+    "search.useIgnoreFiles": true,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "editor.find.seedSearchStringFromSelection": "always",
+    "editor.find.loop": true,
+    "files.autoGuessEncoding": true,
+    "search.maxResults": 0,
+    "search.mode": "view",
+    "search.quickOpen.includeSymbols": true,
+    "search.searchEditor.defaultNumberOfContextLines": 0,
+    "search.smartCase": true
+}
